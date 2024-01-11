@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Login;
+use App\Models\Ronda;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class RondaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class LoginController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Login $login)
+    public function show(Ronda $ronda)
     {
         //
     }
@@ -42,7 +42,7 @@ class LoginController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Login $login)
+    public function edit(Ronda $ronda)
     {
         //
     }
@@ -50,7 +50,7 @@ class LoginController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Login $login)
+    public function update(Request $request, Ronda $ronda)
     {
         //
     }
@@ -58,7 +58,7 @@ class LoginController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Login $login)
+    public function destroy(Ronda $ronda)
     {
         //
     }

@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('rondas', function (Blueprint $table) {
+        Schema::create('ronda', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_akun');
             $table->enum('status_kehadiran', ['hadir', 'sakit', 'izin', 'tidak hadir']);
