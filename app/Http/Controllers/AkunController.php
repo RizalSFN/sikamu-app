@@ -6,7 +6,7 @@ use App\Models\Akun;
 use Illuminate\Http\Request;
 
 class AkunController extends Controller
-{
+{ 
     /**
      * Display a listing of the resource.
      */
@@ -28,7 +28,16 @@ class AkunController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Akun();
+        $data->nik = $request->input('nik');
+        $data->email = $request->input('email');
+        $data->password = bcrypt($request->input('password'));
+        if ($request->input('confirmPassword') != $request->input('password')) {
+            return redirect()->back()->with('error', 'invalid konfirmasi password');
+        } else {
+            $data->save();
+            return redirect()->back()->with('success', 'Pembuatan akun sukses');
+        }
     }
 
     /**
