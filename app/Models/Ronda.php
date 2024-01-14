@@ -9,7 +9,7 @@ class Ronda extends Model
 {
     use HasFactory;
 
-    public function akun() {
-        return $this->belongsTo(Akun::class);
+    public function user() {
+        return $this->belongsTo(User::class);
     }
 }

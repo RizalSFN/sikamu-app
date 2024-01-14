@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('login', function (Blueprint $table) {
+        Schema::create('logins', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_akun');
+            $table->unsignedBigInteger('id_user');
             $table->string('token_akses', 255);
             $table->dateTime('expire_token');
             $table->timestamps();
-            $table->foreign('id_akun')->references('id')->on('akun');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

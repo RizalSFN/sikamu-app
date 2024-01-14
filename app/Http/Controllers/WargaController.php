@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Warga;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WargaController extends Controller
 {
@@ -12,11 +14,15 @@ class WargaController extends Controller
      */
     public function index()
     {
-        $data = Warga::all();
-        return view('dashboard', ["data" => $data]);
+        // $data = Warga::all();
+        // return view('dashboard', ["data" => $data]);
+        $id = Auth()->user()->warga_id;
+        $data = Warga::find($id);
+
+        return view('home.index', ["title" => 'beranda', "data" => $data]);
     }
 
-    /**
+    /**youts.main
      * Show the form for creating a new resource.
      */
     public function create()
@@ -68,7 +74,6 @@ class WargaController extends Controller
      */
     public function update(Request $request, Warga $warga)
     {
-        
     }
 
     /**

@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import daisyui from "daisyui";
 export default {
     content: [
         "./resources/views/*.blade.php",
@@ -7,11 +8,15 @@ export default {
     ],
     theme: {
         colors: {
-            primary: "#00262B",
-            secondary: "#D9D9D9",
-            tertiary: "#BBBBBB",
+            Myprimary: "#00262B",
+            Mysecondary: "#D9D9D9",
+            Mytertiary: "#BBBBBB",
         },
-        extend: {},
+        extend: {
+            fontFamily: {
+                judul: "Jost-Medium",
+            },
+        },
     },
-    plugins: [],
+    plugins: [daisyui],
 };

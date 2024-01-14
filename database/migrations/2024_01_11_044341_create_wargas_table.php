@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('warga', function (Blueprint $table) {
-            $table->unsignedBigInteger('nik')->primary();
+        Schema::create('wargas', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('nik');
             $table->string('nama', 100);
             $table->string('tempat/tanggal_lahir', 50);
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat', 100);
-            $table->tinyInteger('rt', false, true);
-            $table->tinyInteger('rw', false, true);
+            $table->string('rt', 3);
+            $table->string('rw', 3);
             $table->string('desa', 50);
             $table->string('kecamatan', 50);
             $table->enum('agama', ['islam', 'protestan', 'katholik', 'hindu', 'buddha', 'kong hu cu']);

@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Warga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class LoginController extends Controller
+class AuthController extends Controller
 {
     public function login()
     {
-        return view('login');
+        if (Auth::check()) {
+            return redirect('home');
+        } else {
+            return view('auth.login', ["title" => 'login']);
+        }
     }
 
     public function loginProcess(Request $request)
@@ -21,10 +26,24 @@ class LoginController extends Controller
         ];
 
         if (Auth::attempt($data)) {
-            return redirect('home');
+            return redirect()->route('home');
         } else {
             Session::flash('error', 'login failed, please try again!');
+            return redirect('/');
         }
+    }
+
+    public function register()
+    {
+        return view('auth.register', ["title" => 'register']);
+    }
+
+    public function registerProcess(Request $request)
+    {
+        $cek = Warga::findOrFail($request->input('nik'));
+        // if ($cek){
+        // TODO BESOK
+        // }
     }
 
     public function logout()
