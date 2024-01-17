@@ -8,6 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         attribution: "SiKaMU - App",
     }).addTo(mymap);
 
-    let marker = L.marker([-7.008185256965672, 107.5475492369882]).addTo(mymap);
+    let marker = L.marker([-7.009025256975672, 107.5475492369882]).addTo(mymap);
     marker.bindPopup("Lokasimu terkini").openPopup();
 });

@@ -31,5 +31,5 @@
             </table>
         </div>
     </div>
-    <div id="map" class="mt-8 h-80 w-8/12 mx-auto border"></div>
+    <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
 @endsection
