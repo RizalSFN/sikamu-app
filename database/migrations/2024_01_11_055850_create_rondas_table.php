@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('rondas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_akun');
+            $table->unsignedBigInteger('id_user');
             $table->enum('status_kehadiran', ['hadir', 'sakit', 'izin', 'tidak hadir']);
             $table->string('catatan')->nullable();
             $table->timestamps();
-            $table->foreign('id_akun')->references('id')->on('akun');
+            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

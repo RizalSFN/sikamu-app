@@ -11,6 +11,12 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+    protected $table = 'users';
+
+    public function warga()
+    {
+        return $this->hasOne(Warga::class);
+    }
 
     /**
      * The attributes that are mass assignable.

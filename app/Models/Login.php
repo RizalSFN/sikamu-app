@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Login extends Model
 {
     use HasFactory;
+
+    public function akun() {
+        return $this->hasOne(Akun::class);
+    }
 }
