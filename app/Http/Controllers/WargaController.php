@@ -14,8 +14,6 @@ class WargaController extends Controller
      */
     public function index()
     {
-        // $data = Warga::all();
-        // return view('dashboard', ["data" => $data]);
         $id = Auth()->user()->warga_id;
         $data = Warga::find($id);
 

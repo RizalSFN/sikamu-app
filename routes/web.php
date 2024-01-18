@@ -21,17 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('loginProses');
 
-
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/registerPro', [AuthController::class, 'registerProcess'])->name('registerProses');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/email/verify', [VerifyEmailController::class, 'verifyView'])->name('verification.notice');
-    Route::post('/email/verification-notification', [VerifyEmailController::class, 'verifyProcess'])->middleware(['throttle:6,1'])->name('verification.send');
-
-    Route::middleware(['signed'])->group(function () {
-        Route::get('/email/verify/{id}/{hash}', [VerifyEmailController::class, 'verifySuccess'])->name('verification.verify');
-        Route::get('/home', [WargaController::class, 'index'])->name('home');
-        Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
-    });;
+    Route::get('/home', [WargaController::class, 'index'])->name('home');
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });

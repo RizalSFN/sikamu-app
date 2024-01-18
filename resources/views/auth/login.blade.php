@@ -43,8 +43,7 @@
                 <div>
                     <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
                     <div class="mt-2">
-                        <input id="email" name="email" value="{{ old('email') }}" type="email" autocomplete="email"
-                            required autofocus
+                        <input id="email" name="email" type="email" autocomplete="off" required autofocus
                             class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-1 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
                 </div>
@@ -58,10 +57,16 @@
                         </div>
                     </div>
                     <div class="mt-2">
-                        <input id="password" name="password" value="{{ old('password') }}" type="password"
-                            autocomplete="current-password" required
+                        <input id="password" name="password" type="password" autocomplete="off" required
                             class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
+                </div>
+
+                <div class="flex items-center">
+                    <input id="rememberMe" type="checkbox" name="remember"
+                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                    <label for="rememberMe" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
+                        me</label>
                 </div>
 
                 <div>
