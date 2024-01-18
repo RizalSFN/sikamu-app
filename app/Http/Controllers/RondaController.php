@@ -12,7 +12,7 @@ class RondaController extends Controller
      */
     public function index()
     {
-        //
+        return view('page.ronda.index', ["title" => "ronda"]);
     }
 
     /**

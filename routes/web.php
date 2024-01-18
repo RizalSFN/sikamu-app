@@ -26,5 +26,8 @@ Route::post('/registerPro', [AuthController::class, 'registerProcess'])->name('r
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [WargaController::class, 'index'])->name('home');
+    Route::get('/ronda', function () {
+        return view('page.ronda.index', ["title" => "ronda"]);
+    })->name('ronda');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });

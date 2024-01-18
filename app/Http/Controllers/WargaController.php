@@ -17,7 +17,7 @@ class WargaController extends Controller
         $id = Auth()->user()->warga_id;
         $data = Warga::find($id);
 
-        return view('home.index', ["title" => 'beranda', "data" => $data]);
+        return view('page.index', ["title" => 'beranda', "data" => $data]);
     }
 
     /**youts.main
@@ -25,7 +25,7 @@ class WargaController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -56,7 +56,7 @@ class WargaController extends Controller
      */
     public function show(Warga $warga)
     {
-        //
+        
     }
 
     /**

@@ -15,7 +15,9 @@ class AuthController extends Controller
 {
     public function login()
     {
-        if (Auth::check()) {
+        if (Auth::viaRemember()) {
+            return redirect('/home');
+        } else if (Auth::check()) {
             return redirect('/home');
         } else {
             return view('auth.login', ["title" => 'login']);
@@ -30,7 +32,7 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($data, $request->remember)) {
-            return redirect()->route('verification.notice')->with('success', 'please verification your email to access this website');
+            return redirect()->route('home');
         } else {
             return redirect()->back()->with('error', 'login failed, please try again!');
         }
