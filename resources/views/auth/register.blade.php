@@ -3,7 +3,7 @@
 @section('component')
     <div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-            <img class="mx-auto h-28 w-28" src="/img/logo-app.png" alt="SiKaMU logo">
+            <img class="mx-auto h-28 w-28" src="/img/lg.png" alt="SiKaMU logo">
             <h2 class="mt-5 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign up to
                 <span class="bg-clip-text text-transparent bg-gradient-to-r from-cyan-800 to-cyan-400">SiKaMU</span>
             </h2>

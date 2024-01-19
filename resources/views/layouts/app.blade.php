@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SiKaMU - app</title>
     <link rel="icon" type="image/x-icon" href="img/logo-app.png">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dataTables.dataTables.min.css">
