@@ -9,13 +9,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
     public function login()
     {
-        if (Auth::check()) {
-            return redirect('home');
+        if (Auth::viaRemember()) {
+            return redirect('/home');
+        } else if (Auth::check()) {
+            return redirect('/home');
         } else {
             return view('auth.login', ["title" => 'login']);
         }
@@ -28,7 +31,7 @@ class AuthController extends Controller
             "password" => $request->input('password')
         ];
 
-        if (Auth::attempt($data)) {
+        if (Auth::attempt($data, $request->remember)) {
             return redirect()->route('home');
         } else {
             return redirect()->back()->with('error', 'login failed, please try again!');
@@ -43,7 +46,7 @@ class AuthController extends Controller
     public function registerProcess(Request $request)
     {
         $data = $request->validate([
-            'nik' => 'integer|required|min:16',
+            'nik' => 'min:16|required|integer',
             'email' => 'required|email',
             'password' => 'required|min:8|alpha_num',
             'confirm-password' => 'required|min:8|alpha_num'
@@ -64,10 +67,10 @@ class AuthController extends Controller
 
                 return redirect()->route('login')->with('success', 'registering success, please login!');
             } else {
-                return redirect()->back()->withInput()->withErrors(["error" => 'Anda sudah memiliki akun, segera login']);
+                return redirect()->back()->withInput()->with('error', 'Anda sudah memiliki akun, segera login');
             }
         } else {
-            return redirect()->back()->withInput()->withErrors(["error" => 'Anda belum terdaftar sebagai warga']);
+            return redirect()->back()->withInput()->with('error', 'Anda belum terdaftar sebagai warga');
         }
     }
 

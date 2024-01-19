@@ -14,12 +14,10 @@ class WargaController extends Controller
      */
     public function index()
     {
-        // $data = Warga::all();
-        // return view('dashboard', ["data" => $data]);
         $id = Auth()->user()->warga_id;
         $data = Warga::find($id);
 
-        return view('home.index', ["title" => 'beranda', "data" => $data]);
+        return view('page.index', ["title" => 'beranda', "data" => $data]);
     }
 
     /**youts.main
@@ -27,7 +25,7 @@ class WargaController extends Controller
      */
     public function create()
     {
-        //
+        return view('');
     }
 
     /**
@@ -56,9 +54,11 @@ class WargaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Warga $warga)
+    public function show($id)
     {
-        //
+        $detail = Warga::find($id);
+        dd($detail);
+        return view('page.ronda.detail-warga');
     }
 
     /**

@@ -28,8 +28,33 @@
                     <td>{{ $data->alamat }} RT {{ $data->rt }} RW {{ $data->rw }} Desa {{ $data->desa }} Kecamatan
                         {{ $data->kecamatan }}</td>
                 </tr>
+                <tr>
+                    <th>Agama</th>
+                    <td class="px-6">:</td>
+                    <td>{{ $data->agama }}</td>
+                </tr>
+                <tr>
+                    <th>status</th>
+                    <td class="px-6">:</td>
+                    <td>{{ $data->status }}</td>
+                </tr>
+                <tr>
+                    <th>pekerjaan</th>
+                    <td class="px-6">:</td>
+                    <td>{{ $data->pekerjaan }}</td>
+                </tr>
+                <tr>
+                    <th>Kewarganegaraan</th>
+                    <td class="px-6">:</td>
+                    <td>{{ $data->kewarganegaraan }}</td>
+                </tr>
+                <tr>
+                    <th>Telepon</th>
+                    <td class="px-6">:</td>
+                    <td>{{ $data->telepon }}</td>
+                </tr>
             </table>
         </div>
     </div>
-    <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
+    <div id="map" class="my-8 h-80 w-8/12 mx-auto border border-black"></div>
 @endsection
