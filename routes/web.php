@@ -35,3 +35,6 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
     });;
 });
+Route::get('/greeting', function () {
+    return view('home.profil.profil');
+});
