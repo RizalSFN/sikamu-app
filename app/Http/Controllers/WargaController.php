@@ -54,9 +54,11 @@ class WargaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Warga $warga)
+    public function show($id)
     {
-        
+        $detail = Warga::find($id);
+        dd($detail);
+        return view('page.ronda.detail-warga');
     }
 
     /**

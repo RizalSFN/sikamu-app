@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ronda;
+use App\Models\Warga;
 use Illuminate\Http\Request;
 
 class RondaController extends Controller
@@ -12,7 +13,8 @@ class RondaController extends Controller
      */
     public function index()
     {
-        return view('page.ronda.index', ["title" => "ronda"]);
+        $data = Warga::all();
+        return view('page.ronda.index', ["title" => "ronda", 'data' => $data]);
     }
 
     /**
