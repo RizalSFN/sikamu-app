@@ -56,17 +56,26 @@ class WargaController extends Controller
      */
     public function show($id)
     {
-        $detail = Warga::find($id);
-        dd($detail);
-        return view('page.ronda.detail-warga');
+        $detail = Warga::where('id', $id)->get();
+        return view('page.ronda.detail-warga', compact('detail'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Warga $warga)
+    public function edit($id)
     {
-        //
+        $data = Warga::where('id', $id)->get();
+        $ttl = explode('/', $data[0]->ttl);
+        $tanggal_explode = explode('-', $ttl[1]);
+        if ($tanggal_explode[0] < 10) {
+            $day = 0 . $tanggal_explode[0];
+        } else {
+            $day = $tanggal_explode[0];
+        }
+        $tanggal = $tanggal_explode[2] . '-' . $tanggal_explode[1] . '-' . $day;
+        // dd($tanggal);
+        return view('page.ronda.update-warga', compact('data', 'ttl', 'tanggal'));
     }
 
     /**
@@ -74,6 +83,38 @@ class WargaController extends Controller
      */
     public function update(Request $request, Warga $warga)
     {
+        $data = $request->validate([
+            'nama' => 'string',
+            'tempat' => 'string',
+            'tanggal_lahir' => 'date',
+            'jenis_kelamin' => 'string',
+            'alamat' => 'string',
+            'rt' => 'integer|max:3',
+            'rw' => 'integer|max:3',
+            'desa' => 'string',
+            'kecamatan' => 'string',
+            'agama' => 'string',
+            'status' => 'string',
+            'pekerjaan' => 'string',
+            'kewarganegaraan' => 'string',
+            'telepon' => 'min:8|max:15|integer',
+            'foto' => 'size:2048|image'
+        ]);
+
+
+        // $warga->nama = $request->input('nama');
+        // $warga->ttl = $request->input('tempat') . '-' . $request->input('tanggal_lahir');
+        // $warga->jenis_kelamin = $request->input('jenis_kelamin');
+        // $warga->alamat = $request->input('alamat');
+        // $warga->rt = $request->input('rt');
+        // $warga->rw = $request->input('rw');
+        // $warga->desa = $request->input('desa');
+        // $warga->kecamatan = $request->input('kecamatan');
+        // $warga->agama = $request->input('agama');
+        // $warga->status = $request->input('status');
+        // $warga->pekerjaan = $request->input('pekerjaan');
+        // $warga->kewarganegaraan = $request->input('kewarganegaraan');
+        // $warga->telepon = $request->input('telepon');
     }
 
     /**

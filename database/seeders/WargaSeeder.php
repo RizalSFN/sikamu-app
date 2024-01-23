@@ -15,19 +15,19 @@ class WargaSeeder extends Seeder
     {
         Warga::create([
             'nik' => '3204091907060002',
-            'nama' => 'Rizal Sofiana',
-            'tempat/tanggal_lahir' => 'bandung/19-07-2006',
+            'nama' => 'Admin SiKaMU',
+            'tempat/tanggal_lahir' => 'bandung/19-07-2023',
             'jenis_kelamin' => 'laki-laki',
-            'alamat' => 'Jln. Nata Endah',
+            'alamat' => 'Jln. Katapang',
             'rt' => '07',
             'rw' => '02',
             'desa' => 'sayati',
-            'kecamatan' => 'margahayu',
+            'kecamatan' => 'katapang',
             'agama' => 'islam',
             'status' => 'belum kawin',
             'pekerjaan' => 'pelajar',
             'kewarganegaraan' => 'WNI',
-            'telepon' => '087788873882',
+            'telepon' => '034675892034',
         ]);
     }
 }

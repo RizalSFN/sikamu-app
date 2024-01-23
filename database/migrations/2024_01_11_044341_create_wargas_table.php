@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('nik');
             $table->string('nama', 100);
-            $table->string('tempat/tanggal_lahir', 50);
+            // todo add foto column
+            $table->string('ttl', 50)->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
             $table->string('alamat', 100);
             $table->string('rt', 3);
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->string('kecamatan', 50);
             $table->enum('agama', ['islam', 'protestan', 'katholik', 'hindu', 'buddha', 'kong hu cu']);
             $table->enum('status', ['kawin', 'belum kawin']);
-            $table->string('pekerjaan', 50);
+            $table->string('pekerjaan', 50)->nullable();
             $table->enum('kewarganegaraan', ['WNI', 'WNA']);
             $table->string('telepon', 15)->unique();
             $table->timestamps();
