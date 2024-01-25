@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ronda;
+use App\Models\RondaData;
 use App\Models\Warga;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,20 @@ class RondaController extends Controller
     {
         $data = Warga::all();
         return view('page.ronda.index', ["title" => "ronda", 'data' => $data]);
+    }
+
+    public function acak()
+    {
+        $data = Warga::all(['nama']);
+        // dd($data[0]);
+
+        $jadwal = [[], [], [], [], [], [], []];
+        // dd(count($data));
+        foreach ($data as $d) {
+            array_push($jadwal[random_int(0, 6)], $d->nama);
+        }
+
+        return view('page.ronda.jadwal', compact('jadwal'));
     }
 
     /**

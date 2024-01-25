@@ -1061,6 +1061,10 @@ video {
   stroke: #ef4444;
 }
 
+.p-3 {
+  padding: 0.75rem;
+}
+
 .p-4 {
   padding: 1rem;
 }

@@ -8,8 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Ronda extends Model
 {
     use HasFactory;
+    protected $table = 'ronda_absens';
 
     public function user() {
         return $this->belongsTo(User::class);
+    }
+
+    public function ronda_data(){
+        return $this->belongsTo(RondaData::class);
     }
 }

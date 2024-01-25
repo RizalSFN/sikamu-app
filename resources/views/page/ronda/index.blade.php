@@ -22,9 +22,11 @@
                 <td>{{ $d->alamat }}</td>
                 <td>{{ $d->agama }}</td>
                 <td>{{ $d->kewarganegaraan }}</td>
-                <td>
-                    <a href="{{ route('ronda.warga', $d->id) }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Detail</a>
+                <td class="">
+                    @if (auth()->user()->warga_id == $d->id)
+                        <a href="{{ route('ronda.warga', $d->id) }}"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Detail</a>
+                    @endif
                     <a href="#"
                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded">Lapor</a>
                 </td>
@@ -32,7 +34,7 @@
         @endforeach
     </table>
     <div class="w-2/12 mx-auto mt-8">
-        <a href="#"
+        <a href="{{ route('ronda.jadwal') }}"
             class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 border border-cyan-700 rounded">Jadwal
             Ronda</a>
     </div>

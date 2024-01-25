@@ -21,7 +21,6 @@
         </tr>
         <tr>
             @foreach ($detail as $d)
-                <td>{{ $loop->iteration }}</td>
                 <td>{{ $d->nik }}</td>
                 <td>{{ $d->nama }}</td>
                 <td>{{ $d->ttl }}</td>

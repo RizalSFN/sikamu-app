@@ -101,7 +101,7 @@ class WargaController extends Controller
             'foto' => 'size:2048|image'
         ]);
 
-
+        
         // $warga->nama = $request->input('nama');
         // $warga->ttl = $request->input('tempat') . '-' . $request->input('tanggal_lahir');
         // $warga->jenis_kelamin = $request->input('jenis_kelamin');

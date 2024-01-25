@@ -38,6 +38,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ronda/warga/update/{id}', [WargaController::class, 'edit'])->name('ronda.warga.update');
     Route::put('/ronda/warga/update-proses/{id}', [WargaController::class, 'update'])->name('ronda.warga.updateproses');
 
+    Route::get('/ronda/jadwal', [RondaController::class, 'jadwal'])->name('ronda.jadwal');
+    Route::get('/ronda/jadwal/acak', [RondaController::class, 'acak'])->name('ronda.jadwal.acak');
+
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });
 Route::get('/greeting', function () {
