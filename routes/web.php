@@ -32,11 +32,13 @@ Route::post('/registerPro', [AuthController::class, 'registerProcess'])->name('r
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', [WargaController::class, 'index'])->name('home');
 
+    Route::get('/profil/update/{id}', [WargaController::class, 'edit'])->name('warga.edit');
+
     Route::get('/ronda', [RondaController::class, 'index'])->name('ronda');
     Route::get('/ronda/warga/{id}', [WargaController::class, 'show'])->name('ronda.warga');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });
 Route::get('/greeting', function () {
-return view('home.profil.profil');
+    return view('home.profil.profil');
 });

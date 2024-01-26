@@ -13,11 +13,16 @@ return new class extends Migration
     {
         Schema::create('rondas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->enum('status_kehadiran', ['hadir', 'sakit', 'izin', 'tidak hadir']);
-            $table->string('catatan')->nullable();
+            $table->string('senin')->nullable();
+            $table->string('selasa')->nullable();
+            $table->string('rabu')->nullable();
+            $table->string('kamis')->nullable();
+            $table->string('jumat')->nullable();
+            $table->string('sabtu')->nullable();
+            $table->string('minggu')->nullable();
+            $table->date('dari');
+            $table->date('sampai');
             $table->timestamps();
-            $table->foreign('id_user')->references('id')->on('users');
         });
     }
 

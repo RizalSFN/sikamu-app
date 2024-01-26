@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('wargas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nik');
-            $table->string('nama', 100);
-            $table->string('tempat/tanggal_lahir', 50);
-            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan']);
+            $table->string('nama', 100)->nullable();
+            $table->string('ttl', 50)->nullable();
+            $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable();
             $table->string('alamat', 100);
             $table->string('rt', 3);
             $table->string('rw', 3);
             $table->string('desa', 50);
             $table->string('kecamatan', 50);
-            $table->enum('agama', ['islam', 'protestan', 'katholik', 'hindu', 'buddha', 'kong hu cu']);
-            $table->enum('status', ['kawin', 'belum kawin']);
-            $table->string('pekerjaan', 50);
+            $table->enum('agama', ['islam', 'protestan', 'katholik', 'hindu', 'buddha', 'kong hu cu'])->nullable();
+            $table->enum('status', ['kawin', 'belum kawin'])->nullable();
+            $table->string('pekerjaan', 50)->nullable();
             $table->enum('kewarganegaraan', ['WNI', 'WNA']);
             $table->string('telepon', 15)->unique();
             $table->timestamps();

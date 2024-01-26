@@ -64,9 +64,15 @@ class WargaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Warga $warga)
+    public function edit($id)
     {
-        //
+        $warga = Warga::find($id);
+        $ttl = explode('/', $warga->ttl);
+        $tempat = $ttl[0];
+        $tgl = explode('-', $ttl[1]);
+        $tanggal = $tgl[2] . '-' . $tgl[1] . '-' . $tgl[0];
+
+        return view('home.profil.form_profil', compact('warga', 'tempat', 'tanggal'));
     }
 
     /**
