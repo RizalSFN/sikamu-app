@@ -63,7 +63,7 @@ class RondaController extends Controller
             }
         }
         dd($jadwal);
-        return view('page.ronda.jadwal', compact('jadwal'));
+        return view('page.ronda.jadwal-create', compact('jadwal'));
     }
 
     /**
