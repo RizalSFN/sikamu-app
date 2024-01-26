@@ -3,7 +3,7 @@
 <div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed"
   style="background-image: url('/img/bg.png'); height:auto; width:auto;  ">
 
-  <div class="block rounded-lg bg-gray-100 h-auto w-8/12 mt-28 ml-52 pb-10 mb-28">
+  <div class="block rounded-lg bg-gray-100 md:h-auto md:w-8/12 md:mt-20 md:mx-auto md:mb">
   <div class="pt-8">
       <h1 class="text-center font-bold text-3xl">
         PROFIL ANDA
