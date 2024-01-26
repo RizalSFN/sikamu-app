@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-<div class="relative overflow-hidden bg-cover  text-center bg-center"
+<div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed"
   style="background-image: url('/img/bg.png'); height:auto; width:auto;  ">
 
   <div class="block rounded-lg bg-gray-100 h-auto w-8/12 mt-28 ml-52 pb-10 mb-28">
@@ -135,7 +135,7 @@
         
       </table>
       <h1 class="text-center font-bold text-2xl">LOKASI ANDA</h1>
-      <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
+      <div id="map" class="mt-8 h-60 w-6/12 mx-auto border border-black"></div>
       <button class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah Dan Lengkapi Data Diri Anda !!!</button>
     </div>
 </div>

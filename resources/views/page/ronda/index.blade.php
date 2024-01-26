@@ -1,39 +1,45 @@
 @extends('layouts.main')
 
 @section('content')
+<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover"
+  style="background-image: url('/img/bekgron.png'); height:auto; width: auto;  ">
     <div class="w-3/12 mx-auto mt-10 text-center">
-        <h1 class="text-3xl text-red-500">Data warga</h1>
+        <h1 class="text-3xl text-black font-semibold">Data warga</h1>
     </div>
-    <table class="w-7/12 mx-auto mt-5">
+                <form action="" method="" enctype="multipart/form-data">
+                    @csrf
+                      <input type="text" name="search" class="mt-4  w-5/12 h-10 text-gray-400 bg-slate-200 rounded-l-xl px-3 " placeholder="Temukan Kampung Anda disini..." value="">
+                      <button type="submit" class="absolute mt-4 text-black hover:text-cyan-600 font-bold  bg-slate-200 w-auto h-10 rounded-r-xl px-3">
+                         Cari
+                        </button>
+                </form>
+                
+    <table class="w-7/12 mx-auto mt-5 bg-slate-200 ">
         <tr>
-            <th>No</th>
-            <th>Nama</th>
-            <th>Jenis kelamin</th>
-            <th>Alamat</th>
-            <th>Agama</th>
-            <th>Kewarganegaraan</th>
-            <th>Aksi</th>
+            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
+            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Nama</th>
+            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Alamat</th>
+            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Aksi</th>
         </tr>
-        @foreach ($data as $d)
+        
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $d->nama }}</td>
-                <td>{{ $d->jenis_kelamin }}</td>
-                <td>{{ $d->alamat }}</td>
-                <td>{{ $d->agama }}</td>
-                <td>{{ $d->kewarganegaraan }}</td>
-                <td>
-                    <a href="{{ route('ronda.warga', $d->id) }}"
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">Detail</a>
-                    <a href="#"
-                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded">Lapor</a>
+            <td class="border border-black px-1 py-1 bg-cyan-950 text-white"></td>
+            <td class="border border-black px-1 py-1"></td>
+            <td class="border border-black px-1 py-1"></td>
+               
+               
+                <td class="border border-black px-1 py-1">
+                    <a href=""
+                        class="ml-2 bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-1 px-4 border border-green-700 rounded">Detail</a>
+                    
                 </td>
             </tr>
-        @endforeach
+      
     </table>
-    <div class="w-2/12 mx-auto mt-8">
+
+    <div class="w-2/12 mx-auto mt-8 mb-8">
         <a href="#"
-            class="bg-cyan-500 hover:bg-cyan-700 text-white font-bold py-2 px-4 border border-cyan-700 rounded">Jadwal
-            Ronda</a>
+            class="rounded-md text-1xl py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Lihat Jadwal Ronda</a>
     </div>
+</div>
 @endsection
