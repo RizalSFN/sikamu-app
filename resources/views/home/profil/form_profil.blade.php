@@ -1,10 +1,10 @@
 @extends('layouts.app')
 @section('component')
 <div class="contaier">
-<div class="hidden overflow-hidden text-center bg-cover bg-center bg-fixed "
+<div class="relative overflow-hidden text-center bg-cover bg-center bg-fixed"
   style="background-image: url('/img/bekgron.png'); height:auto; width: auto;  ">
 
-  <div class="container block rounded-lg bg-gray-100 mx-auto mt-16 pb-10 mb-28 max-h-min min-w-0 md:max-h-min md:max-w-2xl lg:max-h-min lg:max-w-4xl ">
+  <div class="container block rounded-lg bg-gray-100 mx-auto  px-10 py-10  h-full  w-full md:max-h-min md:mt-16 md:mb-28 md:max-w-2xl lg:max-h-min lg:max-w-4xl ">
     <div class="pt-8">
       <h1 class="text-center font-bold text-3xl">
        BUAT PROFIL ANDA
