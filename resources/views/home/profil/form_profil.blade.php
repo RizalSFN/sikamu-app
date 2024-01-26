@@ -4,7 +4,7 @@
 <div class="relative overflow-hidden text-center bg-cover bg-center bg-fixed"
   style="background-image: url('/img/bekgron.png'); height:auto; width: auto;  ">
 
-  <div class="container block rounded-lg bg-gray-100 mx-auto  px-10 py-10  h-full  w-full md:max-h-min md:mt-16 md:mb-28 md:max-w-2xl lg:max-h-min lg:max-w-4xl ">
+  <div class="container block rounded-lg bg-gray-100 mx-auto  px-10 py-10  h-full  w-full md:max-h-min md:mt-16 md:mb-28 md:max-w-2xl md:mx-auto lg:max-h-min lg:max-w-4xl ">
     <div class="pt-8">
       <h1 class="text-center font-bold text-3xl">
        BUAT PROFIL ANDA
@@ -148,7 +148,7 @@
         </tr>
         
       </table>
-      <h1 class="text-center font-bold text-2xl">LOKASI ANDA</h1>
+      <h1 class="text-center font-bold mt-6 text-2xl">LOKASI ANDA</h1>
       <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
       <button class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
     </div>
