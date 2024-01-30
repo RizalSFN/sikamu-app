@@ -2,7 +2,7 @@
 @section('content')
 <div class="bg-fixed overflow-hidden bg-cover  text-center bg-center" 
   style="background-image: url('/img/bg.png'); height:auto; width:auto; z-index:-10;">
-  <div class=" container block rounded-lg bg-slate-200 mx-auto mt-20 pb-10 mb-28 max-h-min min-w-0 md:max-h-min md:max-w-2xl lg:max-h-min lg:max-w-4xl "style="z-index:-5;" >
+  <div class="container block rounded-lg bg-slate-200 mx-auto  px-3 py-10 h-full  w-full md:max-h-min md:mt-16 md:mb-28 md:max-w-2xl md:mx-auto lg:max-h-min lg:max-w-4xl ">
   <h1 class="text-center font-bold text-3xl pt-10">MINTA BANTUAN</h1>
   <form>
     <div class="my-4 "><input type="text" class="rounded-xl w-8/12 h-14 px-3 mt-8" placeholder="Masukan patokan lokasi anda berada!"></input></div>

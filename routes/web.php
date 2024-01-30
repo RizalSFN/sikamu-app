@@ -18,6 +18,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/greeting', function () {
+    return view('page.ronda.jadwal_ronda');
+    });
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'loginProcess'])->name('loginProses');
@@ -36,7 +39,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ronda/warga/{id}', [WargaController::class, 'show'])->name('ronda.warga');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
-});
-Route::get('/greeting', function () {
-return view('home.profil.profil');
 });
