@@ -25,7 +25,7 @@ class WargaController extends Controller
      */
     public function create()
     {
-        return view('');
+        // return view('');
     }
 
     /**
@@ -33,22 +33,22 @@ class WargaController extends Controller
      */
     public function store(Request $request)
     {
-        $data = new Warga();
-        $data->nik = $request->input('nik');
-        $data->nama = $request->input('nama');
-        $dataTTL = $request->input('tempat') . '/' . $request->input('tanggalLahir');
-        $data->ttl = $dataTTL;
-        $data->jenis_kelamin = $request->input('jenisKelamin');
-        $data->alamat = $request->input('alamat');
-        $data->rt =  $request->input('rt');
-        $data->rw = $request->input('rw');
-        $data->desa = $request->input('desa');
-        $data->kecamatan = $request->input('kecamatan');
-        $data->agama = $request->input('agama');
-        $data->status = $request->input('status');
-        $data->pekerjaan = $request->input('pekerjaan');
-        $data->kewarganegaraan = $request->input('kewarganegaraan');
-        $data->save();
+        // $data = new Warga();
+        // $data->nik = $request->input('nik');
+        // $data->nama = $request->input('nama');
+        // $dataTTL = $request->input('tempat') . '/' . $request->input('tanggalLahir');
+        // $data->ttl = $dataTTL;
+        // $data->jenis_kelamin = $request->input('jenisKelamin');
+        // $data->alamat = $request->input('alamat');
+        // $data->rt =  $request->input('rt');
+        // $data->rw = $request->input('rw');
+        // $data->desa = $request->input('desa');
+        // $data->kecamatan = $request->input('kecamatan');
+        // $data->agama = $request->input('agama');
+        // $data->status = $request->input('status');
+        // $data->pekerjaan = $request->input('pekerjaan');
+        // $data->kewarganegaraan = $request->input('kewarganegaraan');
+        // $data->save();
     }
 
     /**

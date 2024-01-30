@@ -36,6 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/ronda', [RondaController::class, 'index'])->name('ronda');
     Route::get('/ronda/warga/{id}', [WargaController::class, 'show'])->name('ronda.warga');
+    Route::get('/ronda/jadwal', [RondaController::class, 'random'])->name('ronda.jadwal');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });
