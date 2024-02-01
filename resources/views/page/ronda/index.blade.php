@@ -1,24 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<<<<<<< HEAD
-    <div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover "
-        style="background-image: url('/img/bekgron.png'); height:auto; width: auto; opacity ">
-        <div class="mx-auto mt-10 text-center">
-            <h1 class="text-3xl text-black font-semibold">Data warga</h1>
-        </div>
-        <form action="" method="post" enctype="multipart/form-data">
-            @csrf
-            <input type="text" name="search" class="mt-4  w-6/12 h-10 text-gray-400 bg-slate-200 rounded-l-xl px-3 "
-                placeholder="Temukan Kampung Anda...">
-            <button type="submit"
-                class="absolute mt-4 text-black hover:text-cyan-600 font-bold  bg-slate-200 w-auto h-10 rounded-r-xl px-3">
-                Cari
-            </button>
-        </form>
-
-        <table class="w-11/12 mx-auto mt-5 bg-slate-200 ">
-=======
 <div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover h-screen "
   style="background-image: url('/img/bekgron.png'); width: auto; opacity ">
     <div class="mx-auto mt-32 text-center">
@@ -40,7 +22,6 @@
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Aksi</th>
         </tr>
         
->>>>>>> 47c838b3124a70bfe58e98d826149f7f50fe0182
             <tr>
                 <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
                 <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Nama</th>
