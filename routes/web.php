@@ -32,7 +32,7 @@ Route::get('/send-email', function () {
         'body' => 'Testing notif email SiKaMU'
     ];
 
-    Mail::to('zizaannn@gmail.com')->send(new ReportEmailNotification($data));
+    Mail::to('syindiaris@gmail.com')->send(new ReportEmailNotification($data));
 
     dd('Nice cuy');
 });

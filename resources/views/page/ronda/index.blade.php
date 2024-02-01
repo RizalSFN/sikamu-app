@@ -21,8 +21,8 @@
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Alamat</th>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Aksi</th>
         </tr>
-        
-            
+
+            @foreach ($data as $d)
                 <tr>
                     <td class="border border-black px-1 py-1 bg-cyan-950 text-white"></td>
                     <td class="border border-black px-1 py-1"></td>
