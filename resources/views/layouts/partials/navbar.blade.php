@@ -1,13 +1,9 @@
 <div>
     <ul class="list-none text-slate-500 font-medium flex w-5/12 mx-auto">
-        <li class="mx-5"><a href="{{ route('home') }}"
-                class="{{ $title == 'beranda' ? 'text-cyan-500' : 'hover:text-cyan-500' }}">beranda</a></li>
-        <li class="mx-5"><a href="#"
-                class="{{ $title == 'bantuan' ? 'text-cyan-500' : 'hover:text-cyan-500' }}">bantuan</a></li>
-        <li class="mx-5"><a href="{{ route('ronda') }}"
-                class="{{ $title == 'ronda' ? 'text-cyan-500' : 'hover:text-cyan-500' }}">jadwal ronda</a></li>
-        <li class="mx-5"><a href="#"
-                class="{{ $title == 'panggilan darurat' ? 'text-cyan-500' : 'hover:text-cyan-500' }}">panggilan
+        <li class="mx-5"><a href="{{ route('home') }}" class="text-cyan-500 hover:text-cyan-800">beranda</a></li>
+        <li class="mx-5"><a href="#" class="text-cyan-500 hover:text-cyan-800">bantuan</a></li>
+        <li class="mx-5"><a href="{{ route('ronda') }}" class="text-cyan-500 hover:text-cyan-800">jadwal ronda</a></li>
+        <li class="mx-5"><a href="#" class="text-cyan-500 hover:text-cyan-800">panggilan
                 darurat</a>
         </li>
     </ul>

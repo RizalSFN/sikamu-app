@@ -14,31 +14,32 @@ class RondaController extends Controller
      */
     public function index()
     {
-        $data = Warga::all();
-        return view('page.ronda.index', ["title" => "ronda", 'data' => $data]);
+        $data = Warga::paginate(10);
+        $title = 'ronda';
+        $start = ($data->currentPage() - 1) * $data->perPage() + 1;
+        return view('page.ronda.index', compact('title', 'data', 'start'));
     }
 
-    public function jadwal()
+    // todo besok : membuat search sekaligus filter untuk warga di page ronda - pusing dikit gk ngaruh
+
+    public function show(Request $request)
     {
-        $data = RondaData::all();
-        $user = $data[0];
-        $hasil = [];
-        $senin = array_push($hasil, explode('-', $user->senin));
-        $selasa = array_push($hasil, explode('-', $user->selasa));
-        $rabu = array_push($hasil, explode('-', $user->rabu));
-        $kamis = array_push($hasil, explode('-', $user->kamis));
-        $jumat = array_push($hasil, explode('-', $user->jumat));
-        $sabtu = array_push($hasil, explode('-', $user->sabtu));
-        $minggu = array_push($hasil, explode('-', $user->minggu));
-        dd($hasil);
+        $data = Warga::where('desa', '=', $request->input('search'))->get('nama');
+        $title = 'ronda';
+        $start = $start = ($data->currentPage() - 1) * $data->perPage() + 1;
+        return view('page.ronda.index', compact('title', 'data', 'start'));
     }
 
-    public function random()
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create($desa)
     {
-        $warga = Warga::all(['nama']);
+        $warga = Warga::where('desa', '=', $desa)->get('nama');
 
         $count = count($warga);
         $rerata = ceil($count / 5);
+        $title = 'jadwal ronda';
 
         $hasil = [[], [], [], [], [], [], []];
 
@@ -61,16 +62,44 @@ class RondaController extends Controller
                 array_push($hasil[random_int(0, 6)], $war->nama);
             }
         }
-
         dd($hasil);
+
+        $data = new RondaData();
+        $data->senin = implode('-', $hasil[0]);
+        $data->selasa = implode('-', $hasil[1]);
+        $data->rabu = implode('-', $hasil[2]);
+        $data->kamis = implode('-', $hasil[3]);
+        $data->jumat = implode('-', $hasil[4]);
+        $data->sabtu = implode('-', $hasil[5]);
+        $data->minggu = implode('-', $hasil[6]);
+        $data->dari = now();
+        $data->sampai = now()->addDays(7);
+        $data->save();
+
+        return redirect()->back();
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function random(Request $request)
     {
-        //
+        // pengecekan masa berlaku jadwal yang sudah ada
+        $jadwal = RondaData::where('sampai', '>=', now())->get();
+        $title = 'jadwal ronda';
+
+        if ($jadwal === []) {
+            $this->create('gandasari');
+        }
+
+        $user = $jadwal[0];
+        $hasil = [];
+        $senin = array_push($hasil, explode('-', $user->senin));
+        $selasa = array_push($hasil, explode('-', $user->selasa));
+        $rabu = array_push($hasil, explode('-', $user->rabu));
+        $kamis = array_push($hasil, explode('-', $user->kamis));
+        $jumat = array_push($hasil, explode('-', $user->jumat));
+        $sabtu = array_push($hasil, explode('-', $user->sabtu));
+        $minggu = array_push($hasil, explode('-', $user->minggu));
+
+        return view('page.ronda.jadwal_ronda', compact('title', 'hasil'));
     }
 
     /**
@@ -84,10 +113,7 @@ class RondaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Ronda $ronda)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
