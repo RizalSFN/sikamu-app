@@ -1,9 +1,9 @@
 @extends('layouts.main')
 @section('content')
-<div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed"
+<div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed h-screen"
   style="background-image: url('/img/bg.png'); height:auto; width:auto;  ">
 
-  <div class="block rounded-lg bg-slate-200 px-10 py-10 md:h-auto md:w-8/12 md:mt-14 md:mx-auto md:mb-16 md:pb-8">
+  <div class="block rounded-lg bg-slate-200 px-10 py-10 md:h-auto md:w-8/12 md:mt-40  md:mx-auto md:mb-16 md:pb-8">
   <div class="pt-8">
       <h1 class="text-center font-bold text-3xl">
         PROFIL ANDA
