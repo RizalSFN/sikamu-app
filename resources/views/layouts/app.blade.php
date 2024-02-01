@@ -8,6 +8,7 @@
     <title>SiKaMU - app</title>
     <link rel="icon" type="image/x-icon" href="img/logo-app.png">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/dataTables.dataTables.min.css">
@@ -17,7 +18,8 @@
 
 <body>
     @yield('component')
-
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <script src="js/leaflet.js"></script>
     <script src="js/script.js"></script>
     <script src="js/datatables/dataTables.dataTables.min.js"></script>

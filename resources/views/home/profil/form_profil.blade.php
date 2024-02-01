@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('component')
 <div class="contaier">
-<div class="relative overflow-hidden text-center bg-cover bg-center bg-fixed"
+<div class="relative overflow-hidden text-center bg-cover bg-center bg-fixed h-screen"
   style="background-image: url('/img/bekgron.png'); height:auto; width: auto;  ">
 
   <div class="container block rounded-lg bg-slate-200 mx-auto  px-10 py-3 h-full  w-full md:max-h-min md:mt-16 md:mb-28 md:max-w-2xl md:mx-auto lg:max-h-min lg:max-w-4xl ">

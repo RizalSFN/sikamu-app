@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover "
-  style="background-image: url('/img/bekgron.png'); height:auto; width: auto; opacity ">
-    <div class="mx-auto mt-10 text-center">
+<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover h-screen "
+  style="background-image: url('/img/bekgron.png'); width: auto; opacity ">
+    <div class="mx-auto mt-32 text-center">
         <h1 class="text-3xl text-black font-semibold">Data warga</h1>
     </div>
                 <form action="" method="" enctype="multipart/form-data">

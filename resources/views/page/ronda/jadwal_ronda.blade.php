@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover"
-  style="background-image: url('/img/bekgron.png'); height:auto; width: auto;  ">
-    <div class="mx-auto mt-20 text-center">
+<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover h-screen"
+  style="background-image: url('/img/bekgron.png');  width: auto;  ">
+    <div class="mx-auto mt-32 text-center">
         <h1 class="text-3xl text-black font-semibold">JADWAL RONDA</h1>
     </div>
     <div class="container max-w-min mx-auto inline-flex space-x-3">
