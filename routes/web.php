@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/greeting', function () {
-    return view('home.profil.form_profil');
+    return view('page.ronda.jadwal_ronda');
 });
 
 Route::get('/send-email', function () {
@@ -32,7 +32,7 @@ Route::get('/send-email', function () {
         'body' => 'Testing notif email SiKaMU'
     ];
 
-    Mail::to('syindiaris@gmail.com')->send(new ReportEmailNotification($data));
+    Mail::to('zizaannn@gmail.com')->send(new ReportEmailNotification($data));
 
     dd('Nice cuy');
 });

@@ -19,7 +19,7 @@
                                 <td>
                                     Foto Profil
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
@@ -27,151 +27,76 @@
                                 </td>
                             </tr>
                             <tr>
-                            <tr>
                                 <td>
                                     NIK
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
-                                    <input type=text value="{{ $warga->nik }}" class="max-w-min" disabled>
+                                    <input type=text  class="max-w-min" disabled>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    NO.KK
+                                </td>
+                                <td class="p-2">
+                                    :
+                                </td>
+                                <td>
+                                    <input type=text  class="max-w-min" disabled>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Nama
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
-                                    <input type=text value="{{ $warga->nama }}" placeholder="Lengkapi Nama Anda">
+                                    <input type=text placeholder="Lengkapi Nama Anda">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Tempat Lahir
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $tempat }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="text"  placeholder="Lengkapi TTL Anda ">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Tanggal Lahir
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
-                                    <input type=date value="{{ $tanggal }}" placeholder="Lengkapi TTL Anda ">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Jenis Kelamin
-                                </td>
-                                <td>
-                                    :
-                                </td>
-                                <td>
-                                    <input type="radio" id="laki-laki" name="jenis_kelamin" value="laki-laki"
-                                        {{ $warga->jenis_kelamin == 'laki-laki' ? 'checked' : '' }}>
-                                    <label for="laki-laki">Laki-laki</label>
-                                    <input type="radio" id="perempuan" name="jenis_kelamin" value="perempuan"
-                                        {{ $warga->jenis_kelamin == 'perempuan' ? 'checked' : '' }}>
-                                    <label for="perempuan">Perempuan</label>
+                                    <input type=date  placeholder="Lengkapi TTL Anda ">
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Alamat Lengkap
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
-                                    <textarea type=text placeholder="Lengkapi Alamat Anda">{{ $warga->alamat . ' RT ' . $warga->rt . ' RW ' . $warga->rw . ', ' . $warga->desa . ', ' . $warga->kecamatan }}</textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Agama
-                                </td>
-                                <td>
-                                    :
-                                </td>
-                                <td>
-                                    <select name="" id="">
-                                        <option value="">-- Pilih Agama --</option>
-                                        <option value="islam" {{ $warga->agama == 'islam' ? 'selected' : '' }}>islam
-                                        </option>
-                                        <option value="protestan" {{ $warga->agama == 'protestan' ? 'selected' : '' }}>
-                                            Protestan</option>
-                                        <option value="katholik" {{ $warga->agama == 'katholik' ? 'selected' : '' }}>
-                                            Katholik</option>
-                                        <option value="hindu" {{ $warga->agama == 'hindu' ? 'selected' : '' }}>Hindu
-                                        </option>
-                                        <option value="buddha" {{ $warga->agama == 'buddha' ? 'selected' : '' }}>Buddha
-                                        </option>
-                                        <option value="kong hu cu" {{ $warga->agama == 'kong hu cu' ? 'selected' : '' }}>
-                                            Kong hu cu</option>
-                                    </select>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Status Perkawinan
-                                </td>
-                                <td>
-                                    :
-                                </td>
-                                <td>
-                                    <input type="radio" name="status_perkawinan" id="kawin"
-                                        {{ $warga->status == 'kawin' ? 'checked' : '' }}>
-                                    <label for="kawin">Kawin</label>
-                                    <input type="radio" name="status_perkawinan" id="belum_kawin"
-                                        {{ $warga->status == 'belum kawin' ? 'checked' : '' }}>
-                                    <label for="belum_kawin">Belum Kawin</label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Pekerjaan
-                                </td>
-                                <td>
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text value="{{ $warga->pekerjaan }}" name="pekerjaan"
-                                        placeholder="Lengkapi Pekerjaan Anda  ">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Kewarganegaraan
-                                </td>
-                                <td>
-                                    :
-                                </td>
-                                <td>
-                                    <input type="radio" id="wni" name="kewarganegaraan"
-                                        {{ $warga->kewarganegaraan == 'wni' ? 'checked' : '' }}>
-                                    <label for="wni">WNI</label>
-                                    <input type="radio" id="wna" name="kewarganegaraan"
-                                        {{ $warga->kewarganegaraan == 'wna' ? 'checked' : '' }}>
-                                    <label for="wna">WNA</label>
+                                    <textarea type=text placeholder="Lengkapi Alamat Anda"></textarea>
                                 </td>
                             </tr>
                             <tr>
                                 <td>
                                     Titik Koordinat
                                 </td>
-                                <td>
+                                <td class="p-2">
                                     :
                                 </td>
                                 <td>
