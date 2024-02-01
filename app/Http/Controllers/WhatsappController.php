@@ -35,7 +35,8 @@ class WhatsappController extends Controller
         // dd($response->body());
 
         $client = new GuzzleHttpClient();
-        $request = $client->request('GET', 'https://api.fonnte.com/send?token=c2rsHHveNTGETDJ!d7WT&target=087788873882&message=bisa%20gening%20lang%20wkwkwk');
+        $message = "contoh message";
+        $request = $client->request('GET', 'https://api.fonnte.com/send?token=c2rsHHveNTGETDJ!d7WT&target=087788873882&message=' . $message);
         dd($request->getBody());
     }
 
