@@ -21,7 +21,11 @@
                                     :
                                 </td>
                                 <td>
-                                <input type="date">
+                                <select class="p-3" name="" id="">
+                                        <option value="">-- Pilih Nama Warga --</option>
+                                        <option value="kriminl" >Rzal</option>
+                                        
+                                    </select>
                                 </td>
                             </tr>
                             <tr>
