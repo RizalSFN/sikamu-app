@@ -46,4 +46,18 @@
         
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+            var d = new Date().toISOString();
+            d = moment.tz(d, "Asia/Jakarta").format();
+            var minDate = d.substring(0, 11) + "00:00";
+            console.log(minDate);
+
+            $(".datetimepicker").attr({
+                "value" : minDate,
+                "min" : minDate,
+            });
+        });
+</script>
 @endsection

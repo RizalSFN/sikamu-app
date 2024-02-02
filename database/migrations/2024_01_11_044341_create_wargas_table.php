@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('wargas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('nik');
+            $table->unsignedBigInteger('no_kk');
             $table->string('nama', 100)->nullable();
+            $table->string('foto', 100)->nullable();
             $table->string('ttl', 50)->nullable();
             $table->enum('jenis_kelamin', ['laki-laki', 'perempuan'])->nullable();
             $table->string('alamat', 100);
@@ -22,11 +24,8 @@ return new class extends Migration
             $table->string('rw', 3);
             $table->string('desa', 50);
             $table->string('kecamatan', 50);
-            $table->enum('agama', ['islam', 'protestan', 'katholik', 'hindu', 'buddha', 'kong hu cu'])->nullable();
-            $table->enum('status', ['kawin', 'belum kawin'])->nullable();
-            $table->string('pekerjaan', 50)->nullable();
-            $table->enum('kewarganegaraan', ['WNI', 'WNA']);
             $table->string('telepon', 15)->unique();
+            $table->enum('keterangan', ['kepala keluarga', 'anggota keluarga']);
             $table->timestamps();
         });
     }

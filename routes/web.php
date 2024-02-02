@@ -23,8 +23,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/greeting', function () {
-    return view('page.ronda.jadwal_ronda');
-});
+    return view('welcome');
+})->middleware('web');
+Route::post('/pro', [WargaController::class, 'update'])->name('buat');
 
 Route::get('/send-email', function () {
     $data = [
@@ -38,8 +39,9 @@ Route::get('/send-email', function () {
 });
 
 Route::get('/', [AuthController::class, 'login'])->name('login');
-Route::post('/login', [WhatsappController::class, 'sendMessage'])->name('loginProses');
+Route::post('/login', [AuthController::class, 'loginProcess'])->name('loginProses');
 Route::get('/send-notification', [WhatsappController::class, 'sendEmail'])->name('send.notification');
+Route::get('/wa', [WhatsappController::class, 'sendMessage']);
 
 Route::get('/forgot-password', function () {
     return view('auth.forgot-password', ["title" => 'forgot password']);
@@ -59,7 +61,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/ronda/jadwal', [RondaController::class, 'random'])->name('ronda.jadwal');
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
-});
-Route::get('/greeting', function () {
-    return view('home.profil.form_profil');
 });

@@ -15,19 +15,17 @@ class WargaSeeder extends Seeder
     {
         Warga::create([
             'nik' => '3204091907060002',
+            'no_kk' => '3244244563745632',
             'nama' => 'Admin',
-            'tempat/tanggal_lahir' => 'bandung/10-07-2026',
+            'ttl' => 'bandung/10-01-2024',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jln. Katapang',
-            'rt' => '07',
-            'rw' => '02',
+            'rt' => 7,
+            'rw' => 2,
             'desa' => 'ceuri',
             'kecamatan' => 'katapang',
-            'agama' => 'islam',
-            'status' => 'belum kawin',
-            'pekerjaan' => 'pelajar',
-            'kewarganegaraan' => 'WNI',
             'telepon' => '0877456739467',
+            'keterangan' => 'kepala keluarga'
         ]);
     }
 }

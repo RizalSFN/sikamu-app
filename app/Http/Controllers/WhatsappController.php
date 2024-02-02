@@ -35,15 +35,12 @@ class WhatsappController extends Controller
         // dd($response->body());
 
         $client = new GuzzleHttpClient();
-        $message = "contoh message";
-        $request = $client->request('GET', 'https://api.fonnte.com/send?token=c2rsHHveNTGETDJ!d7WT&target=087788873882&message=' . $message);
+        $message = "Hai! saya bot sikamu application";
+        $nomorTujuan = '087788873882';
+        $token = getenv('FONNTE_TOKEN');
+        $request = $client->request('GET', 'https://api.fonnte.com/send?token=' . $token . '&target=' . $nomorTujuan . '&message=' . $message);
         dd($request->getBody());
-    }
 
-    public function sendEmail()
-    {
-        $user = User::find(1);
-        $user->notify(new ReportNotification());
-        return redirect()->back();
+        // return ke route yang diperlukan
     }
 }

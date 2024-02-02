@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ronda;
 use App\Models\RondaData;
 use App\Models\Warga;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class RondaController extends Controller
@@ -33,60 +34,85 @@ class RondaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create($desa)
+    public function create()
     {
-        $warga = Warga::where('desa', '=', $desa)->get('nama');
+        $warga = Warga::where('jenis_kelamin', '=', 'laki-laki')->where('keterangan', '=', 'kepala keluarga')->get();
+        // dd($warga);
 
-        $count = count($warga);
-        $rerata = ceil($count / 5);
-        $title = 'jadwal ronda';
+        $ronda = [];
 
-        $hasil = [[], [], [], [], [], [], []];
+        foreach ($warga as $w) {
+            $x = explode('/', $w->ttl);
+            $x2 = explode('-', $x[1]);
+            $hasil = $x2[2] . '-' . $x2[1] . '-' . $x2[0];
 
-        foreach ($warga as $war) {
-            if (count($hasil[0]) === 5) {
-                array_push($hasil[random_int(1, 6)], $war->nama);
-            } else if (count($hasil[1]) === 5) {
-                array_push($hasil[array_rand([0, 2, 3, 4, 5, 6])], $war->nama);
-            } else if (count($hasil[2]) === 5) {
-                array_push($hasil[array_rand([0, 1, 3, 4, 5, 6])], $war->nama);
-            } else if (count($hasil[3]) === 5) {
-                array_push($hasil[array_rand([0, 1, 2, 4, 5, 6])], $war->nama);
-            } else if (count($hasil[4]) === 5) {
-                array_push($hasil[array_rand([0, 1, 2, 3, 5, 6])], $war->nama);
-            } else if (count($hasil[5]) === 5) {
-                array_push($hasil[array_rand([0, 1, 2, 3, 4, 6])], $war->nama);
-            } else if (count($hasil[6]) === 5) {
-                array_push($hasil[random_int(0, 5)], $war->nama);
+            $d = explode(' ', now());
+
+            $from = Carbon::parse($hasil);
+            $to = Carbon::parse($d[0]);
+
+            if ($to->diffInYears($from) > 18 && $to->diffInYears($from) < 60) {
+                array_push($ronda, $w->nama);
             } else {
-                array_push($hasil[random_int(0, 6)], $war->nama);
+                echo "belum saatnya"; // skip 
             }
         }
-        dd($hasil);
 
-        $data = new RondaData();
-        $data->senin = implode('-', $hasil[0]);
-        $data->selasa = implode('-', $hasil[1]);
-        $data->rabu = implode('-', $hasil[2]);
-        $data->kamis = implode('-', $hasil[3]);
-        $data->jumat = implode('-', $hasil[4]);
-        $data->sabtu = implode('-', $hasil[5]);
-        $data->minggu = implode('-', $hasil[6]);
-        $data->dari = now();
-        $data->sampai = now()->addDays(7);
-        $data->save();
+        $count = count($ronda);
+        $perHari = ceil($count / 7);
 
-        return redirect()->back();
+        dd($count);
+
+        // $count = count($warga);
+        // $rerata = ceil($count / 5);
+        // $title = 'jadwal ronda';
+
+        // $hasil = [[], [], [], [], [], [], []];
+
+        // foreach ($warga as $war) {
+        //     if (count($hasil[0]) === 5) {
+        //         array_push($hasil[random_int(1, 6)], $war->nama);
+        //     } else if (count($hasil[1]) === 5) {
+        //         array_push($hasil[array_rand([0, 2, 3, 4, 5, 6])], $war->nama);
+        //     } else if (count($hasil[2]) === 5) {
+        //         array_push($hasil[array_rand([0, 1, 3, 4, 5, 6])], $war->nama);
+        //     } else if (count($hasil[3]) === 5) {
+        //         array_push($hasil[array_rand([0, 1, 2, 4, 5, 6])], $war->nama);
+        //     } else if (count($hasil[4]) === 5) {
+        //         array_push($hasil[array_rand([0, 1, 2, 3, 5, 6])], $war->nama);
+        //     } else if (count($hasil[5]) === 5) {
+        //         array_push($hasil[array_rand([0, 1, 2, 3, 4, 6])], $war->nama);
+        //     } else if (count($hasil[6]) === 5) {
+        //         array_push($hasil[random_int(0, 5)], $war->nama);
+        //     } else {
+        //         array_push($hasil[random_int(0, 6)], $war->nama);
+        //     }
+        // }
+        // dd($hasil);
+
+        // $data = new RondaData();
+        // $data->senin = implode('-', $hasil[0]);
+        // $data->selasa = implode('-', $hasil[1]);
+        // $data->rabu = implode('-', $hasil[2]);
+        // $data->kamis = implode('-', $hasil[3]);
+        // $data->jumat = implode('-', $hasil[4]);
+        // $data->sabtu = implode('-', $hasil[5]);
+        // $data->minggu = implode('-', $hasil[6]);
+        // $data->dari = now();
+        // $data->sampai = now()->addDays(7);
+        // $data->save();
+
+        // return redirect()->back();
     }
 
     public function random(Request $request)
     {
         // pengecekan masa berlaku jadwal yang sudah ada
+        $this->create();
         $jadwal = RondaData::where('sampai', '>=', now())->get();
         $title = 'jadwal ronda';
 
         if ($jadwal === []) {
-            $this->create('gandasari');
         }
 
         $user = $jadwal[0];
@@ -107,7 +133,12 @@ class RondaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $all = [];
+        $senin = array_push($all, [$request->input('senin1'), $request->input('senin2')]);
+        $selasa = array_push($all, [$request->input('selasa1'), $request->input('selasa2')]);
+
+        $ronda = new RondaData();
+        $ronda->senin = implode('-', $all[0]);
     }
 
     /**

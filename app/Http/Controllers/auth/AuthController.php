@@ -16,11 +16,19 @@ class AuthController extends Controller
     public function login()
     {
         if (Auth::viaRemember()) {
-            return redirect('/home');
+            if (auth()->user()->role == 'admin') {
+                // do something
+            } else {
+                return redirect('/home');
+            }
         } else if (Auth::check()) {
-            return redirect('/home');
+            if (auth()->user()->role == 'admin') {
+                // do something
+            } else {
+                return redirect('/home');
+            }
         } else {
-            return view('auth.login', ["title" => 'login']);
+            return view('auth.login');
         }
     }
 
@@ -32,7 +40,11 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($data, $request->remember)) {
-            return redirect()->route('home');
+            if (auth()->user()->role == 'admin') {
+                // do something
+            } else {
+                return redirect()->route('home');
+            }
         } else {
             return redirect()->back()->with('error', 'login failed, please try again!');
         }

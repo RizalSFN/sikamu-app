@@ -63,7 +63,7 @@
                     </div>
 
 
-                    <div class="flex items-center my-3.5 mx-3.5">
+                    <div class="flex items-center my-3.5">
                         <input id="rememberMe" type="checkbox" name="remember"
                             class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 rounded focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="rememberMe" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Remember
@@ -76,9 +76,6 @@
                             in</button>
                     </div>
             </form>
-
-
-
         </div>
     </div>
     </div>
