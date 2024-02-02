@@ -6,7 +6,7 @@
   <div class="block rounded-lg bg-slate-200 px-10 py-10 md:h-auto md:w-8/12 md:mt-40  md:mx-auto md:mb-16 md:pb-8">
   <div class="pt-24 md:pt-8">
       <h1 class="text-center font-bold text-3xl">
-        PROFIL ANDA
+        DETAIL WARGA
       </h1>
       <img class="mx-auto h-60 w-60 rounded-full mt-6" src="/img/warga.jpg" alt="profil anda">
 
@@ -80,9 +80,9 @@
         </tr>
         
       </table>
-      <h1 class="text-center font-bold text-2xl mt-10">LOKASI ANDA</h1>
-      <div id="map" class="mt-8 h-60 w-6/12 mx-auto border border-black"></div>
-      <button class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah Dan Lengkapi Data Diri Anda !!!</button>
+      <h1 class="text-center font-bold text-2xl mt-10 ">LOKASI ANDA</h1>
+      <div id="map" class="mt-8 h-60 w-6/12 mx-auto border border-black mb-10"></div>
+      
     </div>
 </div>
 

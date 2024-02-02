@@ -21,28 +21,21 @@
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Alamat</th>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Aksi</th>
         </tr>
-        
-            <tr>
-                <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
-                <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Nama</th>
-                <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Alamat</th>
-                <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Aksi</th>
-            </tr>
 
             @foreach ($data as $d)
                 <tr>
-                    <td class="border border-black px-1 py-1 bg-cyan-950 text-white">{{ $start++ }}</td>
-                    <td class="border border-black px-1 py-1">{{ $d->nama }}</td>
-                    <td class="border border-black px-1 py-1">{{ $d->alamat }}</td>
+                    <td class="border border-black px-1 py-1 bg-cyan-950 text-white"></td>
+                    <td class="border border-black px-1 py-1"></td>
+                    <td class="border border-black px-1 py-1"></td>
                     <td class="border border-black px-1 py-1">
                         <a href=""
                             class="ml-2 bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-1 px-4 border border-green-700 rounded">Detail</a>
                     </td>
                 </tr>
-            @endforeach
+           
             <tr>
                 <td colspan="4">
-                    {{ $data->links() }}
+                    
                 </td>
             </tr>
         </table>

@@ -23,9 +23,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/greeting', function () {
-    return view('welcome');
-})->middleware('web');
-Route::post('/pro', [WargaController::class, 'update'])->name('buat');
+    return view('admin.dt_warga.detail_warga');
+});
 
 Route::get('/send-email', function () {
     $data = [
@@ -33,7 +32,7 @@ Route::get('/send-email', function () {
         'body' => 'Testing notif email SiKaMU'
     ];
 
-    Mail::to('syindiaris@gmail.com')->send(new ReportEmailNotification($data));
+    Mail::to('zizaannn@gmail.com')->send(new ReportEmailNotification($data));
 
     dd('Nice cuy');
 });
