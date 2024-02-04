@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('warga_id');
             $table->string('alamat', 100);
             $table->string('catatan', 150)->nullable();
+            $table->string('koordinat', 50);
             $table->timestamps();
             $table->foreign('kategori_bencana_id')->references('id')->on('kategori_bencana');
             $table->foreign('warga_id')->references('id')->on('wargas');

@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function showPosition(position) {
         let mymap = L.map("map").setView(
             [position.coords.latitude, position.coords.longitude],
-            13
+            14
         );
 
         L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         newLng
                 )
                 .openOn(mymap);
+            document.querySelector("#koordinat").value = `${newLat}, ${newLng}`;
         }
         mymap.on("click", onMapClick);
     }

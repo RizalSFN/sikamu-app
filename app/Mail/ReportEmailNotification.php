@@ -28,7 +28,7 @@ class ReportEmailNotification extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'SiKaMU Notification',
+            subject: 'Danger Message',
         );
     }
 
@@ -38,7 +38,7 @@ class ReportEmailNotification extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'page.email.email-layout',
+            view: 'page.email.email-layout'
         );
     }
 

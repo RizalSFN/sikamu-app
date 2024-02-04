@@ -1,7 +1,8 @@
 <?php
 
 use App\Http\Controllers\auth\AuthController;
-use App\Http\Controllers\auth\VerifyEmailController;
+use App\Http\Controllers\LaporController;
+use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\RondaController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\WhatsappController;
@@ -23,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/greeting', function () {
-    return view('admin.dt_warga.detail_warga');
-});
+    return view('home.bantuan.bantuan');
+})->name('coba');
 
 Route::get('/send-email', function () {
     $data = [
@@ -50,14 +51,31 @@ Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/registerPro', [AuthController::class, 'registerProcess'])->name('registerProses');
 
 Route::middleware(['auth'])->group(function () {
+    // Home Route
     Route::get('/home', [WargaController::class, 'index'])->name('home');
 
-    Route::get('/profil/update/{id}', [WargaController::class, 'edit'])->name('warga.edit');
+    // Admin Route
+    Route::middleware(['checkRole:admin'])->group(function () {
+        Route::get('/dashboard/admin', function () {
+            return view('admin.dashboard');
+        })->name('admin.dashboard');
+    });
 
+    // Lapor / Minta Bantuan Route
+    Route::get('/bantuan', [LaporController::class, 'index'])->name('bantuan');
+    Route::post('/bantuan/lapor', [LaporController::class, 'bantuan'])->name('bantuan.lapor');
+
+    // Profil Route
+    Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
+    Route::get('/profil/data', [ProfilController::class, 'create'])->name('profil.form');
+    Route::get('/profil/data/update/{id}', [WargaController::class, 'edit'])->name('profil.edit');
+
+    // Ronda Route
     Route::get('/ronda', [RondaController::class, 'index'])->name('ronda');
     Route::post('/ronda/search', [RondaController::class, 'index'])->name('ronda.search');
     Route::get('/ronda/warga/{id}', [WargaController::class, 'show'])->name('ronda.warga');
     Route::get('/ronda/jadwal', [RondaController::class, 'random'])->name('ronda.jadwal');
 
+    // Logout Route
     Route::get('/logout', [AuthController::class, 'logout'])->name('logoutProses');
 });

@@ -16,7 +16,7 @@ class WargaSeeder extends Seeder
         Warga::create([
             'nik' => '3204091907060002',
             'no_kk' => '3244244563745632',
-            'nama' => 'Admin',
+            'nama' => 'Warga',
             'ttl' => 'bandung/10-01-2024',
             'jenis_kelamin' => 'laki-laki',
             'alamat' => 'Jln. Katapang',
