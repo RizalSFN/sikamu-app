@@ -52,7 +52,7 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('auth.register', ["title" => 'register']);
+        return view('auth.register');
     }
 
     public function registerProcess(Request $request)
@@ -63,6 +63,10 @@ class AuthController extends Controller
             'password' => 'required|min:8|alpha_num',
             'confirm-password' => 'required|min:8|alpha_num'
         ]);
+
+        if ($request->input('confirm-password') != $request->input('password')) {
+            return redirect()->back()->withInput()->with('error', 'Invalid confirm password');
+        }
 
         $cek = Warga::all()->firstWhere('nik', null, $request->input('nik'));
 

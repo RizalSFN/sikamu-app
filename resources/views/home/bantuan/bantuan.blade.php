@@ -43,13 +43,14 @@
                 </div>
                 <div class="my-4 ">
                     <input type="text" name="patokanLokasi" class="rounded-xl w-8/12 h-14 px-3"
-                        placeholder="Masukan patokan lokasi anda berada!">
+                        placeholder="Masukan patokan lokasi kejadian!">
                 </div>
                 <div class="my-4">
                     <textarea class="rounded-xl w-8/12 h-24 pt-2 px-4 mt-4" name="catatan" placeholder="Tambah Catatan..."></textarea>
                 </div>
                 <input type="text" name="koordinat" class="rounded-xl w-3/12 h-14 px-3 text-center" id="koordinat"
                     onchange="showPosition(position)" placeholder="---, ---">
+                <input type="hidden" id="koordinat-database" name="koordinat-database" value="{{ $warga->koordinat }}">
                 <h1 class="text-center font-bold text-3xl pt-8">LOKASI KEJADIAN</h1>
                 <div id="map" class="mt-8 h-60 w-6/12 mx-auto border border-black"></div>
                 <button type="submit"
@@ -59,4 +60,39 @@
 
         </div>
     </div>
+    <script>
+        const koordinat_db = document.getElementById("koordinat-database").value;
+        const exKoor = koordinat_db.split(", ");
+        const lat = exKoor[0];
+        const long = exKoor[1];
+
+        let mymap = L.map("map").setView([lat, long], 14);
+
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "SiKaMU - App",
+        }).addTo(mymap);
+
+        let marker = L.marker([lat, long]).addTo(mymap);
+        marker.bindPopup("Lokasimu").openPopup();
+
+        let currentMarker;
+
+        function onMapClick(e) {
+            let newLatLng = e.latlng.toString();
+            let splits = newLatLng.split("(");
+            let split2 = splits[1].split(")");
+            let hasil = split2[0].split(", ");
+            let newLat = hasil[0];
+            let newLng = hasil[1];
+
+            if (currentMarker) {
+                mymap.removeLayer(currentMarker);
+            }
+
+            currentMarker = L.marker(e.latlng).addTo(mymap);
+
+            document.getElementById("koordinat").value = `${newLat}, ${newLng}`;
+        }
+        mymap.on("click", onMapClick);
+    </script>
 @endsection

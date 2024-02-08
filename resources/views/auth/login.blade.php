@@ -62,7 +62,6 @@
                             class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
                     </div>
 
-
                     <div class="flex items-center my-3.5">
                         <input id="rememberMe" type="checkbox" name="remember"
                             class="w-4 h-4 text-cyan-600 bg-gray-100 border-gray-300 rounded focus:ring-cyan-500 dark:focus:ring-cyan-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
@@ -75,8 +74,13 @@
                             class="flex w-full justify-center rounded-md bg-cyan-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-cyan-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-600">Sign
                             in</button>
                     </div>
+
+                    <p class="mt-10 text-center text-sm text-gray-500">
+                        Don't have account?
+                        <a href="{{ route('register') }}"
+                            class="font-semibold leading-6 text-cyan-600 hover:text-cyan-500">Sign Up</a> now!
+                    </p>
             </form>
         </div>
-    </div>
     </div>
 @endsection

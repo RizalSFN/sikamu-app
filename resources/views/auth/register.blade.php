@@ -19,13 +19,13 @@
                 </svg>
 
                 <div>
-                    <span class="text-sm">{{ dd(session('error')) }}</span>
+                    <span class="text-sm">{{ session('error') }}</span>
                 </div>
             </div>
         @endif
 
         <div class="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="{{ route('registerProses') }}" method="POST" class="space-y-6">
+            <form action="{{ route('register.proses') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
                     <label for="nik" class="block text-sm font-medium leading-6 text-gray-900">NIK</label>
@@ -83,8 +83,8 @@
 
             <p class="mt-10 text-center text-sm text-gray-500">
                 Have account?
-                <a href="{{ route('login') }}"
-                    class="font-semibold leading-6 text-cyan-600 hover:text-cyan-500">Login</a> now!
+                <a href="{{ route('login') }}" class="font-semibold leading-6 text-cyan-600 hover:text-cyan-500">Login</a>
+                now!
             </p>
         </div>
     </div>

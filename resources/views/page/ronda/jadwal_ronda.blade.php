@@ -7,20 +7,20 @@
             <h1 class="text-3xl text-black font-semibold">JADWAL RONDA</h1>
         </div>
         <div class="container max-w-min mx-auto inline-flex space-x-3">
-            <a href="#"
-                class="rounded-md mt-5 px-2 py-2 md:rounded-md md:text-1xl md:py-2 md:px-2 md:mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Sen</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Sel</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Rab</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Kam</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Jum</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Sab</a>
-            <a href="#"
-                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Min</a>
+            <a href="{{ route('ronda', ['data' => 'senin']) }}"
+                class="rounded-md mt-5 px-2 py-2 md:rounded-md md:text-1xl md:py-2 md:px-2 md:mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'senin' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Sen</a>
+            <a href="{{ route('ronda', ['data' => 'selasa']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'selasa' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Sel</a>
+            <a href="{{ route('ronda', ['data' => 'rabu']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'rabu' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Rab</a>
+            <a href="{{ route('ronda', ['data' => 'kamis']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'kamis' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Kam</a>
+            <a href="{{ route('ronda', ['data' => 'jumat']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'jumat' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Jum</a>
+            <a href="{{ route('ronda', ['data' => 'sabtu']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'sabtu' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Sab</a>
+            <a href="{{ route('ronda', ['data' => 'minggu']) }}"
+                class="rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'minggu' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Min</a>
         </div>
         <table class="table-auto table-collapse w-11/12 mx-auto mt-5 bg-slate-200 ">
             <tr>
@@ -30,13 +30,20 @@
                 <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Kehadiran</th>
             </tr>
 
-            <tr>
-                <td class="border border-black px-1 py-1 bg-cyan-950 text-white"></td>
-                <td class="border border-black px-1 py-1"></td>
-                <td class="border border-black px-1 py-1"></td>
-                <td class="border border-black px-1 py-1"></td>
-            </tr>
-
+            @if ($message == '')
+                @foreach ($data as $d)
+                    <tr>
+                        <td class="border border-black px-1 py-1 bg-cyan-950 text-white">{{ $loop->iteration }}</td>
+                        <td class="border border-black px-1 py-1">{{ $d->nama }}</td>
+                        <td class="border border-black px-1 py-1">{{ $d->warga->alamat }}</td>
+                        <td class="border border-black px-1 py-1">-</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td colspan="4" class="border border-black px-1 py-1">{{ $message }}</td>
+                </tr>
+            @endif
         </table>
         <div class="block justify-center px-5 py-5"></div>
         <a href="#"
@@ -44,21 +51,5 @@
         <a href="#"
             class="block w-32 mb-5 mx-auto rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Tidak
             Hadir</a>
-
     </div>
-    </div>
-
-    <script>
-        $(document).ready(function() {
-            var d = new Date().toISOString();
-            d = moment.tz(d, "Asia/Jakarta").format();
-            var minDate = d.substring(0, 11) + "00:00";
-            console.log(minDate);
-
-            $(".datetimepicker").attr({
-                "value": minDate,
-                "min": minDate,
-            });
-        });
-    </script>
 @endsection

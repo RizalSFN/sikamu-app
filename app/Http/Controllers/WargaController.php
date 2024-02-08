@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\LaporBencana;
 use App\Models\User;
 use App\Models\Warga;
 use DateTime;
@@ -22,36 +23,46 @@ class WargaController extends Controller
         return view('home.index', ["title" => 'beranda', "data" => $data]);
     }
 
+    public function adminIndex()
+    {
+        $warga = Warga::where('keterangan', '=', 'kepala keluarga')->get();
+        $data = Warga::paginate(10);
+        $kejahatan = LaporBencana::all();
+        $start = ($data->currentPage() - 1) * $data->perPage() + 1;
+        // dd($data);
+        return view('admin.dashboard', compact('data', 'start', 'warga', 'kejahatan'));
+    }
+
     /**youts.main
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function adminCreate()
     {
-        // return view('#masukkanNamaViewCreateWarga-admin');
+        return view('admin.dt_warga.tambah_warga');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function adminStore(Request $request)
     {
 
         $user = $request->validate([
-            'nik' => 'required|integer|size:16',
-            'no_kk' => 'required|integer|size:16',
-            'nama' => 'required',
-            'jenisKelamin' => 'required',
-            'telepon' => 'required|integer'
+            'nik' => 'required|integer|digits:16',
+            'no_kk' => 'required|integer|digits:16',
+            'nama' => 'required|alpha',
+            'rt' => 'required|numeric',
+            'rw' => 'required|numeric',
+            'desa' => 'required',
+            'kecamatan' => 'required',
+            'telepon' => 'required|numeric',
+            'keterangan' => 'required'
         ]);
-
-        $extanggal = explode('-', $request->input('tanggal'));
-        $tanggal = $extanggal[2] . '-' . $extanggal[1] . '-' . $extanggal[0];
 
         $data = new Warga();
         $data->nik = $request->input('nik');
+        $data->no_kk = $request->input('no_kk');
         $data->nama = $request->input('nama');
-        $data->ttl = $request->input('tempat') . '/' . $tanggal;
-        $data->jenis_kelamin = $request->input('jenisKelamin');
         $data->alamat = $request->input('alamat');
         $data->rt =  $request->input('rt');
         $data->rw = $request->input('rw');
@@ -59,7 +70,11 @@ class WargaController extends Controller
         $data->kecamatan = $request->input('kecamatan');
         $data->telepon = $request->input('telepon');
         $data->keterangan = $request->input('keterangan');
+        // dd($data);
         $data->save();
+
+
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -71,70 +86,29 @@ class WargaController extends Controller
         // return view('#MasukkanNamaViewYangSesuai');
     }
 
+    public function adminShow($id)
+    {
+        $warga = Warga::find($id);
+        $rt = strlen($warga->rt) == 1 ? '00' . $warga->rt  : '0' . $warga->rt;
+        $rw = strlen($warga->rw) == 1 ? '00' . $warga->rw : '0' . $warga->rw;
+        // dd($warga);
+        return view('admin.dt_warga.detail_warga', compact('warga', 'rt', 'rw'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit($id)
     {
-        $warga = Warga::find($id);
-        $ttl = explode('/', $warga->ttl);
-        $tempat = $ttl[0];
-        $tgl = explode('-', $ttl[1]);
-        $tanggal = $tgl[2] . '-' . $tgl[1] . '-' . $tgl[0];
-
-        return view('home.profil.form_profil', compact('warga', 'tempat', 'tanggal'));
+        // 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        $user = Warga::findOrFail(1);
-
-        // $data = $request->validate([
-        //     'foto' => 'image|mimes:png,jpg,jpeg,',
-        //     'tempat' => 'required',
-        //     'tanggal' => 'required'
-        // ]); //y-m-d
-
-        $ex = explode('-', $request->input('date'));
-        $tanggal = implode('-', array_reverse($ex));
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = $image->hashName();
-            $request->image->move(public_path('img'), $imageName);
-
-            $user->update([
-                'foto' => $image->hashName(),
-                'nama' => $request->input('nama'),
-                'ttl' => $request->input('tempat') . '/' . $tanggal,
-                'jenis_kelamin' => $request->input('jenisKelamin'),
-                'alamat' => $request->input('alamat'),
-                'rt' => $request->input('rt'),
-                'rw' => $request->input('rw'),
-                'desa' => $request->input('desa'),
-                'kecamatan' => $request->input('kecamatan'),
-            ]);
-
-            // return ke route sebelumnya
-
-        } else {
-            $user->update([
-                'nama' => $request->input('nama'),
-                'ttl' => $request->input('tempat') . '/' . $tanggal,
-                'jenis_kelamin' => $request->input('jenisKelamin'),
-                'alamat' => $request->input('alamat'),
-                'rt' => $request->input('rt'),
-                'rw' => $request->input('rw'),
-                'desa' => $request->input('desa'),
-                'kecamatan' => $request->input('kecamatan'),
-            ]);
-
-            // return ke route sebelumnya
-
-        }
+        // 
     }
 
     /**

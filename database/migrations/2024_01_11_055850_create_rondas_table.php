@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('rondas', function (Blueprint $table) {
             $table->id();
-            $table->string('senin')->nullable();
-            $table->string('selasa')->nullable();
-            $table->string('rabu')->nullable();
-            $table->string('kamis')->nullable();
-            $table->string('jumat')->nullable();
-            $table->string('sabtu')->nullable();
-            $table->string('minggu')->nullable();
-            $table->date('dari');
-            $table->date('sampai');
+            $table->unsignedBigInteger('warga_id');
+            $table->string('nama', 50);
+            $table->enum('hari', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
             $table->timestamps();
+            $table->foreign('warga_id')->references('id')->on('wargas');
         });
     }
 

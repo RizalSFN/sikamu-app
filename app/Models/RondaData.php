@@ -9,4 +9,9 @@ class RondaData extends Model
 {
     use HasFactory;
     protected $table = 'rondas';
+
+    public function warga()
+    {
+        return $this->belongsTo(Warga::class, 'warga_id', 'id');
+    }
 }

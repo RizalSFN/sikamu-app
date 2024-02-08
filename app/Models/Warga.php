@@ -15,20 +15,22 @@ class Warga extends Model
         return $this->hasOne(User::class);
     }
 
+    public function rondaData()
+    {
+        return $this->hasMany(RondaData::class);
+    }
+
     protected $fillable = [
         'nik',
         'nama',
-        'tempat/tanggal_lahir',
-        'jenis_kelamin',
-        'alamat',
+        'foto',
+        'ttl',
         'rt',
         'rw',
         'desa',
         'kecamatan',
         'agama',
-        'status',
-        'pekerjaan',
-        'kewarganegaraan',
-        'telepon'
+        'telepon',
+        'koordinat'
     ];
 }

@@ -6,8 +6,8 @@
         .myButton {
             display: inline-block;
             padding: 10px 20px;
+            color: white;
             background-color: #3490dc;
-            color: #ffffff;
             text-decoration: none;
             border-radius: 5px;
         }
@@ -19,7 +19,7 @@
         <hr style="background-color: black; height: 3px;">
         <h1>PERHATIAN!!!</h1>
         <hr style="background-color: black; height: 3px;">
-        <h3>Telah terjadi {{ $data['title'] }}</h3>
+        <h2>Telah terjadi {{ $data['kategori'] }}</h2>
     </center><br><br>
 
     <table class="mt-8">
@@ -42,7 +42,7 @@
     <center>
         <a href="{{ $data['lokasi'] }}" class="myButton">Lihat
             Lokasi Kejadian</a>
-    </center>
+    </center><br><br><br><br><br>
 </body>
 
 </html>

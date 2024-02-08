@@ -10,10 +10,12 @@
                     <h1 class="text-center font-bold text-3xl">
                         BUAT PROFIL ANDA
                     </h1>
-                    <img class="mx-auto max-w-xs max-h-full rounded-full mt-6 md:max-w-5xl md:max-h-full "
-                        src="/img/profil.jpg" id="imagePreview" alt="profil anda">
-                    <form method="" action="">
+                    <img class="mx-auto max-w-xs max-h-full w-60 h-60 rounded-full mt-6 md:max-w-5xl md:max-h-full "
+                        src="{{ $data->foto ? asset('images/' . $data->foto) : '/img/profil.jpg' }}" id="imagePreview"
+                        alt="profil anda">
+                    <form action="{{ route('profil.edit.proses') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <table class="mt-6 text-left mx-auto ">
                             <tr>
                                 <td>
@@ -23,8 +25,12 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)"
+                                    <input type="file" id="imageInput" name="image"
                                         placeholder="Lengkapi foto profil Anda" class="max-w-min">
+                                    @error('image')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
@@ -57,7 +63,12 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $data->nama }}" placeholder="Lengkapi Nama Anda">
+                                    <input type="text" name="nama" value="{{ $data->nama }}"
+                                        placeholder="Lengkapi Nama Anda">
+                                    @error('nama')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
@@ -68,7 +79,12 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $tempat }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="text" name="tempat" value="{{ $tempat }}"
+                                        placeholder="Lengkapi tempat lahir Anda ">
+                                    @error('tempat')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
@@ -79,7 +95,12 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="date" value="{{ $tanggal }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="date" name="tanggal" value="{{ $tanggal }}"
+                                        placeholder="Lengkapi tanggal lahir Anda ">
+                                    @error('tanggal')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
@@ -90,7 +111,11 @@
                                     :
                                 </td>
                                 <td>
-                                    <textarea type=text placeholder="Lengkapi Alamat Anda">{{ $data->alamat }}</textarea>
+                                    <textarea type="text" name="alamat" placeholder="Lengkapi Alamat Anda">{{ $data->alamat }}</textarea>
+                                    @error('alamat')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
                             <tr>
@@ -101,7 +126,7 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $rt }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="number" value="{{ $rt }}" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -112,7 +137,7 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $rw }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="number" value="{{ $rw }}" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -123,7 +148,7 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $data->desa }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="text" value="{{ $data->desa }}" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -134,7 +159,7 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type="text" value="{{ $data->kecamatan }}" placeholder="Lengkapi TTL Anda ">
+                                    <input type="text" value="{{ $data->kecamatan }}" disabled>
                                 </td>
                             </tr>
                             <tr>
@@ -145,59 +170,113 @@
                                     :
                                 </td>
                                 <td>
-                                    <input type=text placeholder="Lengkapi koordinat lokasi Anda ">
+                                    <input type="text" name="koordinat" id="koordinat" value="{{ $data->koordinat }}"
+                                        placeholder="---, ---">
+                                    @error('koordinat')
+                                        <label
+                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                                    @enderror
                                 </td>
                             </tr>
-
                         </table>
-                        <h1 class="text-center font-bold mt-6 text-2xl">LOKASI ANDA</h1>
+                        <h1 class="text-center font-bold mt-6 text-2xl">PILIH LOKASI ANDA</h1>
+                        <label class="font-semibold">(<i>klik pada peta dibawah ini</i>)</label>
                         <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
-                        <button
+                        <button type="submit"
                             class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">
                             Submit !!
                         </button>
+                    </form>
                 </div>
             </div>
-            </form>
         </div>
     </div>
     <script>
-        function previewImage(event) {
-            const input = event.target;
-            const reader = new FileReader();
+        const koordinat = document.getElementById("koordinat").value;
+        if (koordinat !== "") {
+            const exKoor = koordinat.split(", ");
+            const lat = exKoor[0];
+            const long = exKoor[1];
 
-            reader.onload = function() {
-                const dataURL = reader.result;
+            let mymap = L.map("map").setView([lat, long], 14);
 
-                kompresDanResizeGambar(dataURL, 50, 'image/jpeg', function(compressedDataUrl) {
-                    $('#imagePreview').attr('src', compressedDataUrl).show();
-                });
-            }
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "SiKaMU - App",
+            }).addTo(mymap);
 
-            reader.readAsDataURL(input.files[0]);
+            let marker = L.marker([lat, long]).addTo(mymap);
+            marker.bindPopup("Lokasimu").openPopup();
+        } else if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
         }
 
-        function kompresDanResizeGambar(dataURL, kualitas, jenisOutput, callback) {
-            const gambar = new Image();
+        function showPosition(position) {
+            let mymap = L.map("map").setView(
+                [position.coords.latitude, position.coords.longitude],
+                14
+            );
 
-            gambar.onload = function() {
-                const kanvas = document.createElement('canvas');
-                const konteks = kanvas.getContext('2d');
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "SiKaMU - App",
+            }).addTo(mymap);
 
-                // Atur dimensi kanvas sesuai dengan ukuran yang diinginkan
-                kanvas.width = 800; // Atur lebar sesuai kebutuhan
-                kanvas.height = (kanvas.width / gambar.width) * gambar.height;
+            let currentMarker;
 
-                // Gambar gambar pada kanvas dengan dimensi baru
-                konteks.drawImage(gambar, 0, 0, kanvas.width, kanvas.height);
+            function onMapClick(e) {
+                let newLatLng = e.latlng.toString();
+                let splits = newLatLng.split("(");
+                let split2 = splits[1].split(")");
+                let hasil = split2[0].split(", ");
+                let newLat = hasil[0];
+                let newLng = hasil[1];
 
-                // Konversi kanvas menjadi data URL
-                const dataUrlTerkompresi = kanvas.toDataURL(jenisOutput, kualitas / 100);
+                if (currentMarker) {
+                    mymap.removeLayer(currentMarker);
+                }
 
-                callback(dataUrlTerkompresi);
+                currentMarker = L.marker(e.latlng).addTo(mymap);
+
+                document.getElementById("koordinat").value = `${newLat}, ${newLng}`;
+            }
+            mymap.on("click", onMapClick);
+        }
+
+        let imageInput = document.getElementById("imageInput");
+        let imagePreview = document.getElementById("imagePreview");
+
+        imageInput.addEventListener("change", function() {
+            let file = imageInput.files[0];
+
+            if (file) {
+                let reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Resize the image preview
+                    resizeImagePreview(e.target.result);
+                };
+
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function resizeImagePreview(imageDataURL) {
+            let img = new Image();
+            img.src = imageDataURL;
+
+            img.onload = function() {
+                // Resize the image to a specific width (e.g., 300 pixels)
+                let maxWidth = 200;
+                let aspectRatio = img.width / img.height;
+                let newWidth = Math.min(maxWidth, img.width);
+                let newHeight = newWidth / aspectRatio;
+
+                // Set the resized image dimensions
+                imagePreview.width = newWidth;
+                imagePreview.height = newHeight;
+
+                // Set the resized image source
+                imagePreview.src = imageDataURL;
             };
-
-            gambar.src = dataURL;
         }
     </script>
 @endsection
