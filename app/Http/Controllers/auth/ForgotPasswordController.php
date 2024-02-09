@@ -15,7 +15,7 @@ class ForgotPasswordController extends Controller
 {
     public function index()
     {
-        
+
         return view('auth.forgot-password-link');
     }
 
@@ -24,6 +24,11 @@ class ForgotPasswordController extends Controller
         $data = $request->validate([
             'email' => 'required|email'
         ]);
+
+        $user = User::where('email', '=', $request->email)->get('email');
+        if ($user->isEmpty()) {
+            return redirect()->back()->with('error', 'Your email not registered, please try again!');
+        }
 
         $uuid = Uuid::uuid4();
         $exTime = explode(' ', now());
@@ -57,7 +62,7 @@ class ForgotPasswordController extends Controller
         $tokenId = $tokenD[0]->id;
 
         if ($request->query('token_forgot') !== $tokenD[0]->token) {
-            return redirect()->route('admin.warga.create')->with('error', 'invalid token, please try again');
+            return redirect()->route('forgot-password')->with('error', 'invalid token, please try again!');
         } else {
             return view('auth.forgot-password', compact('tokenD', 'id', 'tokenId'));
         }
