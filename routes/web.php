@@ -69,8 +69,8 @@ Route::middleware(['auth'])->group(function () {
         // TODO pisan
 
         // Ronda Route
-        Route::get('/ronda/create', [RondaController::class, 'create'])->name('ronda.create');
-        Route::post('/ronda/create/proses', [RondaController::class, 'store'])->name('ronda.create.proses');
+        Route::get('admin/ronda/create', [RondaController::class, 'create'])->name('ronda.create');
+        Route::post('admin/ronda/create/proses', [RondaController::class, 'store'])->name('ronda.create.proses');
     });
 
     // Logout Route

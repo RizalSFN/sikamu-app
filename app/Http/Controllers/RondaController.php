@@ -43,7 +43,17 @@ class RondaController extends Controller
     public function store(Request $request)
     {
         $all = [$request->input('select_name'), $request->input('select_day')];
-        dd($all);
+        $ronda = RondaData::all();
+
+        foreach ($all[0] as $a => $i) {
+            $jadwal = new RondaData();
+            $jadwal->nama = $i;
+            $jadwal->hari = $all[1][$a];
+            $jadwal->save();
+        }
+
+        return redirect()->back()->with('success', 'sukses bro!');
+        // dd($p);
     }
 
     public function show(Request $request)

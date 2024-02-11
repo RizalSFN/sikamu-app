@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('rondas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('warga_id');
             $table->string('nama', 50);
             $table->enum('hari', ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu', 'minggu']);
             $table->timestamps();
-            $table->foreign('warga_id')->references('id')->on('wargas');
         });
     }
 

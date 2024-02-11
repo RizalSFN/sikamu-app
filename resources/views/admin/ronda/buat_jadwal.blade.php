@@ -10,8 +10,11 @@
                     <h1 class="text-center font-bold text-3xl">
                         Buat Jadwal Ronda
                     </h1>
-                    <form method="POST" action="{{ route('form.submit') }}">
+                    <form method="POST" action="{{ route('ronda.create.proses') }}">
                         @csrf
+                        @if (session('success'))
+                            {{ session('success') }}
+                        @endif
                         <table>
                             <tr class="border border-black">
                                 <th class="border border-black">Senin</th>
