@@ -1,111 +1,72 @@
 @extends('layouts.admin-app')
-@section('component')
-    <div class="contaier">
-        <div class="relative text-center bg-cover bg-center bg-fixed h-screen"
-            style="background-image: url('/img/bekgron.png');  width: auto;  ">
 
-            <div
-                class="container block rounded-lg bg-gray-100 mx-auto px-10 py-10  h-full  w-full md:h-auto md:mt-16  md:max-w-2xl md:mx-auto lg:h-auto lg:max-w-4xl ">
-                <div class="pt-8">
-                    <h1 class="text-center font-bold text-3xl">
-                        Buat Jadwal Ronda
-                    </h1>
-                    <form method="POST" action="{{ route('ronda.create.proses') }}">
-                        @csrf
-                        @if (session('success'))
-                            {{ session('success') }}
-                        @endif
-                        <table>
-                            <tr class="border border-black">
-                                <th class="border border-black">Senin</th>
-                                <th>Selasa</th>
-                                <th>Rabu</th>
-                                <th>Kamis</th>
-                                <th>Jumat</th>
-                                <th>Sabtu</th>
-                                <th>Minggu</th>
-                            </tr>
-                            <tr class="border border-black">
-                                <td class="border border-black p-4">
-                                    <div id="input-container">
-                                        <div class="input-group">
-                                            <select name="select_name[]" class="px-2">
-                                                <option value="" selected disabled>Pilih warga</option>
-                                                @foreach ($data as $d)
-                                                    <option value="{{ $d->nama }}">{{ $d->nama }}
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                            <select name="select_day[]" class="px-2">
-                                                <option value="" selected disabled>Pilih hari</option>
-                                                <option value="senin">Senin</option>
-                                                <option value="selasa">Selasa</option>
-                                                <option value="rabu">Rabu</option>
-                                                <option value="kamis">Kamis</option>
-                                                <option value="jumat">Jumat</option>
-                                                <option value="sabtu">Sabtu</option>
-                                                <option value="minggu">Minggu</option>
-                                            </select>
-                                            <button type="button"
-                                                class="ml-4 border border-black bg-red-500 px-1 text-white"
-                                                disabled>Hapus</button>
-                                        </div>
-                                    </div>
+@section('component')
+    <div class="relative bg-cover bg-center bg-fixed h-screen"
+        style="background-image: url('/img/bekgron.png');  width:full; overflow-x:hidden;  ">
+        <div
+            class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-10  md:mx-auto md:mb-16 md:pb-8 md:py-20 md:px-20">
+            <br />
+            <h2 class="text-3xl font-semibold text-center mb-4">Jadwal Ronda</h2>
+            <div class="form-group">
+                <form name="add_name" id="add_name ">
+                    <div class="mx-auto text-center">
+                        <table class="mx-auto w-11/12 mb-16" id="dynamic_field">
+                            <tr>
+                                <td>
+
+                                    <select class="w-auto mt-3 mr-3" name="name[]"
+                                        class="form-control name_list col-sm col-md-7" placeholder="PILIH WARGA">
+                                        <option value="---Pilih Warga---">---Pilih Warga---</option>
+                                        <option value="Umam">Umam</option>
+                                        <option value="Agus">Agus</option>
+                                    </select>
                                 </td>
-                            </tr>
-                            <tr class="border border-black">
-                                <td class="border border-black">
-                                    <button type="button" id="add-input"
-                                        class="ml-4 border border-black bg-green-500 hover:bg-green-700 px-1 text-white">Tambah</button>
+                                <td>
+                                    <select class="w-auto mt-3" name="hari[]" class="form-control day_list col-sm col-md-7"
+                                        placeholder="PILIH HARI">
+                                        <option value="---Pilih Hari---">---Pilih Hari---</option>
+                                        <option value="Senin">Senin</option>
+                                        <option value="Selasa">Selasa</option>
+                                    </select>
+                                </td>
+                                <td><button type="button" name="add" id="add"
+                                        class="rounded-md py-1 px-1 mt-3 bg-gradient-to-r ml-3  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Tambah</button>
                                 </td>
                             </tr>
                         </table>
-                        <button type="submit"
-                            class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
-                    </form>
-                </div>
+                        <input type="button" name="submit" id="submit" value="Submit"
+                            class="rounded-md py-1 px-2 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400" />
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    </div>
     <script>
         $(document).ready(function() {
-            $("#add-input").click(function() {
-                $("#input-container").append('<div class="input-group mt-4">' +
-                    '<select name="select_name[]">' +
-                    '<option value="" selected disabled>Pilih warga</option>' +
-                    '@foreach ($data as $d)' +
-                    '<option value="{{ $d->nama }}">{{ $d->nama }}</option>' +
-                    '@endforeach' +
-                    '</select>' +
-                    '<select name="select_day[]" class="px-2"> ' +
-                    '<option value="" selected disabled>Pilih hari</option>' +
-                    '<option value="senin">Senin</option>' +
-                    '<option value="selasa">Selasa</option>' +
-                    '<option value="rabu">Rabu</option>' +
-                    '<option value="kamis">Kamis</option>' +
-                    '<option value="jumat">Jumat</option>' +
-                    '<option value="sabtu">Sabtu</option>' +
-                    '<option value="minggu">Minggu</option>' +
-                    '</select>' +
-                    '<button type="button" id="remove-input" class="ml-4 border border-black bg-red-500 hover:bg-red-700 px-1 text-white" >Hapus</button>' +
-                    '</div>');
+            var i = 1;
+            $('#add').click(function() {
+                i++;
+                $('#dynamic_field').append('<tr id="row' + i +
+                    '"><td><select class="w-auto mr-3" name="name[]" class="form-control name_list col-sm col-md-7"><option value="---Pilih Warga---">---Pilih Warga---</option><option value="Umam">Umam</option><option value="Agus">Agus</option></td><td></select><select class="w-auto mt-3" hari="hari[]" class="form-control day_list col-sm col-md-7"><option value="---Pilih Hari---">---Pilih Hari---</option><option value="Senin">Senin</option><option value="Selasa">Selasa</option></select></td><td><button type="button" name="remove" id="' +
+                    i +
+                    '" class="btn_remove rounded-md py-1 px-1 mt-3 bg-gradient-to-r ml-3  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Urungkan</button></td></tr>'
+                );
             });
-
-            $(document).on("click", "#remove-input", function() {
-                $(this).parent().remove();
+            $(document).on('click', '.btn_remove', function() {
+                var button_id = $(this).attr("id");
+                $('#row' + button_id + '').remove();
+            });
+            $('#submit').click(function() {
+                $.ajax({
+                    url: "name.php",
+                    method: "POST",
+                    data: $('#add_name').serialize(),
+                    success: function(data) {
+                        alert(data);
+                        $('#add_name')[0].reset();
+                    }
+                });
             });
         });
-
-        // $(document).ready(function() {
-        //     var d = new Date().toISOString();
-        //     d = moment.tz(d, "Asia/Jakarta").format();
-        //     var minDate = d.substring(0, 11) + "00:00";
-        //     console.log(minDate);
-
-        //     $("#datetimepicker").attr({
-        //         "min": minDate,
-        //     });
-        // });
     </script>
 @endsection

@@ -45,11 +45,5 @@
                 </tr>
             @endif
         </table>
-        <div class="block justify-center px-5 py-5"></div>
-        <a href="#"
-            class="block max-w-min mx-auto rounded-md text-1xl py-2 px-2 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Hadir</a>
-        <a href="#"
-            class="block w-32 mb-5 mx-auto rounded-md text-1xl py-2 px-2 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Tidak
-            Hadir</a>
     </div>
 @endsection
