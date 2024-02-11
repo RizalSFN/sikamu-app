@@ -27,7 +27,7 @@
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Nama</th>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Alamat</th>
-            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Kehadiran</th>
+            <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No.Tlp</th>
         </tr>
         
             <tr>

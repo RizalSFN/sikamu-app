@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('greeting',function (){
-    return view('admin.Bantuan.Laporan');
+    return view('page.ronda.jadwal_ronda');
 });
 
 Route::get('/send-email', function () {
