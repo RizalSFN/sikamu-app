@@ -12,53 +12,40 @@
                     </h1>
                     <form method="" action="">
                         @csrf
-                        <table class="mt-6 text-left mx-auto ">
-                            <tr>
-                                <td>
-                                    NIK
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                <input type=text placeholder="Lengkapi NIK">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    NO.KK
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                <input type=text placeholder="Lengkapi NO.KK">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Nama
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text placeholder="Lengkapi Nama Anda">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Nomor Telepon
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=number placeholder="Lengkapi No Telepon">
-                                </td>
-                            </tr>
+                        <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="NIK" class="block text-sm font-medium leading-6 text-gray-900">NIK</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi No.NIK Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('NIK')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class="text-left w-8/12 mx-auto mt-4">
+                <label for="No.KK" class="block text-sm font-medium leading-6 text-gray-900">No.KK</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi No.KK Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('NIK')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi Tempat Tanggal Lahir Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('nama')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
 
-                        </table>
                         <button
                             class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
                 </div>

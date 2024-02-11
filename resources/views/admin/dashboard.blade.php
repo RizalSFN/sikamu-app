@@ -1,8 +1,8 @@
 @extends('layouts.main-admin')
 
 @section('content')
-<div class="bg-fixed overflow-hidden text-center bg-cover bg-center object-cover h-auto"
-  style="background-image: url('/img/bekgron.png'); width: auto; opacity ">
+<div class="bg-fixed text-center bg-cover bg-center object-cover h-screen"
+  style="background-image: url('/img/bekgron.png'); width: auto; overflow-x:hidden; ">
     <div class="mx-auto mt-32 text-center">
         
         <h1 class="text-3xl text-black font-semibold">Data warga</h1>
@@ -42,18 +42,10 @@
                     </td>
                 </tr>
            
-            <tr>
-                <td colspan="4">
-                    
-                </td>
-            </tr>
+            
         </table>
 
-        <div class="mx-auto mt-4 mb-8">
-            <button><a href="#"
-                    class="rounded-md text-sm py-2 px-2 w-10 md:text-base md:font-semibold md:rounded-md md:py-3 md:px-3 md:text-1xl mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Jadwal
-                    Ronda</a></button>
-        </div>
+       
        
     </div>
 @endsection

@@ -10,101 +10,87 @@
                     <h1 class="text-center font-bold text-3xl">
                         BUAT PROFIL ANDA
                     </h1>
-                    <img class="mx-auto max-w-xs max-h-full rounded-full mt-6 md:max-w-5xl md:max-h-full "
+                    <img class="mx-auto max-w-xs max-h-full rounded-full mb-8 mt-6 md:max-w-5xl md:max-h-full "
                         src="/img/profil.jpg" alt="profil anda">
                     <form method="" action="">
                         @csrf
-                        <table class="mt-6 text-left mx-auto ">
-                            <tr>
-                                <td>
-                                    Foto Profil
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="file" placeholder="Lengkapi foto profil Anda" class="max-w-min">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    NIK
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text  class="max-w-min" disabled>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    NO.KK
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text  class="max-w-min" disabled>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Nama
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text placeholder="Lengkapi Nama Anda">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Tempat Lahir
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="text"  placeholder="Lengkapi TTL Anda ">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Tanggal Lahir
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=date  placeholder="Lengkapi TTL Anda ">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Alamat Lengkap
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <textarea type=text placeholder="Lengkapi Alamat Anda"></textarea>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Titik Koordinat
-                                </td>
-                                <td class="p-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type=text placeholder="Lengkapi koordinat lokasi Anda ">
-                                </td>
-                            </tr>
-
-                        </table>
+                        <div class=" text-left w-8/12 mx-auto">
+                    <label for="profil" class="block text-sm font-medium leading-6 text-gray-900">Foto Profil</label>
+                    <div class="mt-1">
+                        <input  type="file"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('profil')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi Nama Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('nama')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="NIK" class="block text-sm font-medium leading-6 text-gray-900">NIK</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi No.NIK Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('NIK')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="ttl" class="block text-sm font-medium leading-6 text-gray-900">Tempat Tanggal Lahir</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi Tempat Tanggal Lahir Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('ttl')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="alamat" class="block text-sm font-medium leading-6 text-gray-900">Alamat</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi Alamat Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('alamat')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="tlp" class="block text-sm font-medium leading-6 text-gray-900">No.Tlp</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi No.Tlp Aktif"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('tlp')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
+                <div class=" text-left w-8/12 mx-auto mt-4">
+                    <label for="koordinat" class="block text-sm font-medium leading-6 text-gray-900">koordinat</label>
+                    <div class="mt-1">
+                        <input  type="text" placeholder="Lengkapi Koordinat Lokasi Anda"
+                            required autofocus
+                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                    </div>
+                    @error('Koordinat')
+                        <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                    @enderror
+                </div>
                         <h1 class="text-center font-bold mt-6 text-2xl">LOKASI ANDA</h1>
                         <div id="map" class="mt-8 h-80 w-8/12 mx-auto border border-black"></div>
                         <button

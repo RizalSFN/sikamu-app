@@ -10,13 +10,13 @@
 <body>
      <div class="relative bg-cover bg-center bg-fixed h-screen"
      style="background-image: url('/img/bekgron.png');  width:full; overflow-x:hidden;  ">
-     <div class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-10  md:mx-auto md:mb-16 md:pb-8 md:py-20 md:px-20">  
+     <div class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-16  md:mx-auto md:mb-16 md:pb-8 md:py-10 md:px-20">  
      <br />  
-               <h2 class="text-3xl font-semibold text-center mb-4">Jadwal Ronda</h2>  
+               <h2 class="text-3xl font-semibold text-center mb-4 mt-8 md:mt-0">Jadwal Ronda</h2>  
                <div class="form-group">  
                     <form name="add_name" id="add_name " >  
                          <div class="mx-auto text-center">  
-                              <table class="mx-auto w-11/12 mb-16" id="dynamic_field">  
+                              <table class="mx-auto w-11/12 mb-4" id="dynamic_field">  
                                    <tr>  
                                         <td >
                                          
@@ -36,7 +36,7 @@
                                         <td ><button type="button" name="add" id="add" class="rounded-md py-1 px-1 mt-3 bg-gradient-to-r ml-3  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Tambah</button></td>  
                                    </tr>  
                               </table>  
-                              <input type="button" name="submit" id="submit" value="Submit" class="rounded-md py-1 px-2 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400"/>  
+                              <input type="button" name="submit" id="submit" value="Submit" class="rounded-md py-1 px-2 mt-2 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400"/>  
                          </div>  
                     </form>  
                </div>  
