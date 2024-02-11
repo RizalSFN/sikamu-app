@@ -1,22 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-     <script src="https://cdn.tailwindcss.com"></script>
-     <title>jadwal_ronda</title>
-</head>
-<body>
-     <div class="relative bg-cover bg-center bg-fixed h-screen"
-     style="background-image: url('/img/bekgron.png');  width:full; overflow-x:hidden;  ">
-     <div class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-10  md:mx-auto md:mb-16 md:pb-8 md:py-20 md:px-20">  
-     <br />  
+<html>  
+     <head>  
+          <title>jadwal</title>  
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+          <script src="https://cdn.tailwindcss.com"></script>
+     </head>  
+     <body><div class="relative bg-cover bg-center bg-fixed h-screen"
+  style="background-image: url('/img/bekgron.png');  width:full; overflow-x:hidden;  ">  
+          <div class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-10  md:mx-auto md:mb-16 md:pb-8 md:py-20 md:px-20">  
+               
+               <br />  
                <h2 class="text-3xl font-semibold text-center mb-4">Jadwal Ronda</h2>  
                <div class="form-group">  
                     <form name="add_name" id="add_name " >  
                          <div class="mx-auto text-center">  
-                              <table class="mx-auto w-11/12 mb-16" id="dynamic_field">  
+                              <table class="mx-auto w-11/12" id="dynamic_field">  
                                    <tr>  
                                         <td >
                                          
@@ -69,6 +66,3 @@ $(document).ready(function(){
      });  
 });  
 </script>
-     
-</body>
-</html>

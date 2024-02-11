@@ -1,22 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
-     <script src="https://cdn.tailwindcss.com"></script>
-     <title>jadwal_ronda</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JDWL RONDA</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-     <div class="relative bg-cover bg-center bg-fixed h-screen"
-     style="background-image: url('/img/bekgron.png');  width:full; overflow-x:hidden;  ">
-     <div class="block  rounded-lg bg-slate-200  h-full  md:h-auto md:w-8/12 md:mt-10  md:mx-auto md:mb-16 md:pb-8 md:py-20 md:px-20">  
-     <br />  
+<div class="relative overflow-hidden bg-cover bg-center bg-fixed h-screen"
+  style="background-image: url('/img/bekgron.png'); width:full;  ">  
+  <div class="block rounded-lg bg-slate-200 px-10 h-full py-10 md:h-auto md:w-8/12 md:mt-40  md:mx-auto md:mb-16 md:pb-8">  
+               <br />  
+               <br />  
                <h2 class="text-3xl font-semibold text-center mb-4">Jadwal Ronda</h2>  
                <div class="form-group">  
                     <form name="add_name" id="add_name " >  
                          <div class="mx-auto text-center">  
-                              <table class="mx-auto w-11/12 mb-16" id="dynamic_field">  
+                              <table class="mx-auto w-11/12" id="dynamic_field">  
                                    <tr>  
                                         <td >
                                          
@@ -42,33 +43,6 @@
                </div>  
           </div>  
 </div>
-     </body>  
-</html>  
-<script>  
-$(document).ready(function(){  
-     var i=1;  
-     $('#add').click(function(){  
-          i++;  
-          $('#dynamic_field').append('<tr id="row'+i+'"><td><select class="w-auto mr-3" name="name[]" class="form-control name_list col-sm col-md-7"><option value="---Pilih Warga---">---Pilih Warga---</option><option value="Umam">Umam</option><option value="Agus">Agus</option></td><td></select><select class="w-auto mt-3" hari="hari[]" class="form-control day_list col-sm col-md-7"><option value="---Pilih Hari---">---Pilih Hari---</option><option value="Senin">Senin</option><option value="Selasa">Selasa</option></select></td><td><button type="button" name="remove" id="'+i+'" class="btn_remove rounded-md py-1 px-1 mt-3 bg-gradient-to-r ml-3  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Urungkan</button></td></tr>');  
-     });  
-     $(document).on('click', '.btn_remove', function(){  
-          var button_id = $(this).attr("id");   
-          $('#row'+button_id+'').remove();  
-     });  
-     $('#submit').click(function(){            
-          $.ajax({  
-               url:"name.php",  
-               method:"POST",  
-               data:$('#add_name').serialize(),  
-               success:function(data)  
-               {  
-                    alert(data);  
-                    $('#add_name')[0].reset();  
-               }  
-          });  
-     });  
-});  
-</script>
-     
+    
 </body>
 </html>

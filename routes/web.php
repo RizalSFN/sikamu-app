@@ -21,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/greeting', function () {
-    return view('admin.dt_warga.detail_warga');
+Route::get('greeting',function (){
+    return view('admin.ronda.jadwal_ronda');
 });
 
 Route::get('/send-email', function () {

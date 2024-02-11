@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.main-admin')
 @section('content')
 <div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed h-screen"
   style="background-image: url('/img/bg.png'); height:auto; width:auto;  ">
