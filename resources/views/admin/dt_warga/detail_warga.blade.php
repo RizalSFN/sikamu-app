@@ -1,8 +1,8 @@
 @extends('layouts.main-admin')
-@section('content')
-    <div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed h-screen"
-        style="background-image: url('/img/bekgron.png'); height:auto; width:auto;  ">
 
+@section('content')
+    <div class="relative bg-cover  text-center bg-center bg-fixed h-screen"
+        style="background-image: url('/img/bekgron.png'); height:auto; width:auto; overflow-x:hidden; ">
         <div class="block rounded-lg bg-slate-200 px-10 py-10 md:h-auto md:w-8/12 md:mt-40  md:mx-auto md:mb-16 md:pb-8">
             <div class="pt-24 md:pt-8">
                 <h1 class="text-center font-bold text-3xl">
