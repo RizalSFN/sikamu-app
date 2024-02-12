@@ -52,7 +52,6 @@ Route::middleware(['auth'])->group(function () {
 
         // Ronda Route
         Route::get('/ronda', [RondaController::class, 'index'])->name('ronda');
-        Route::get('/ronda/jadwal', [RondaController::class, 'random'])->name('ronda.jadwal');
     });
 
     // Admin Route
@@ -69,8 +68,11 @@ Route::middleware(['auth'])->group(function () {
         // TODO pisan
 
         // Ronda Route
-        Route::get('admin/ronda/create', [RondaController::class, 'create'])->name('ronda.create');
-        Route::post('admin/ronda/create/proses', [RondaController::class, 'store'])->name('ronda.create.proses');
+        Route::get('admin/ronda', [RondaController::class, 'index'])->name('admin.ronda');
+        Route::get('admin/ronda/create', [RondaController::class, 'create'])->name('admin.ronda.create');
+        Route::post('admin/ronda/create/proses', [RondaController::class, 'store'])->name('admin.ronda.create.proses');
+        Route::get('admin/ronda/update/{id}', [RondaController::class, 'edit'])->name('admin.ronda.update');
+        Route::put('admin/ronda/update/proses/{id}', [RondaController::class, 'update'])->name('admin.ronda.update.proses');
     });
 
     // Logout Route

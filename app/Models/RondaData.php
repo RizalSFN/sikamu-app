@@ -9,6 +9,7 @@ class RondaData extends Model
 {
     use HasFactory;
     protected $table = 'rondas';
+    protected $fillable = ['nama', 'hari'];
 
     public function warga()
     {

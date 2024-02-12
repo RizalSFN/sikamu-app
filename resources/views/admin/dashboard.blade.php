@@ -68,7 +68,7 @@
 
         <div class="mx-auto mt-8 mb-8">
             <button>
-                <a href=""
+                <a href="{{ route('admin.ronda') }}"
                     class="rounded-md text-sm py-2 px-2 w-10 md:text-base md:font-semibold md:rounded-md md:py-3 md:px-3 md:text-1xl mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Jadwal
                     Ronda</a>'
             </button>

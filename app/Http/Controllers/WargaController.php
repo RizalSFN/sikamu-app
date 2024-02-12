@@ -29,8 +29,9 @@ class WargaController extends Controller
         $data = Warga::paginate(10);
         $kejahatan = LaporBencana::all();
         $start = ($data->currentPage() - 1) * $data->perPage() + 1;
+        $title = 'dashboard';
         // dd($data);
-        return view('admin.dashboard', compact('data', 'start', 'warga', 'kejahatan'));
+        return view('admin.dashboard', compact('data', 'start', 'warga', 'kejahatan', 'title'));
     }
 
     /**youts.main
