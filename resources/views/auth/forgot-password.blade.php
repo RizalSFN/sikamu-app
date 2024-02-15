@@ -27,6 +27,9 @@
                         <input type="password" id="password" name="password"
                             class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                             placeholder="Enter your new password" autocomplete="off" required autofocus>
+                        @error('password')
+                            <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                        @enderror
                         <div class="absolute end-0 inset-y-0 flex items-center pe-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5 cursor-pointer text-gray-600 dark:text-gray-400"
@@ -54,6 +57,9 @@
                         <input type="password" id="confirm-password" name="confirm-password"
                             class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                             placeholder="Enter your confirm password" autocomplete="off" required>
+                        @error('confirm-password')
+                            <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                        @enderror
                         <div class="absolute end-0 inset-y-0 flex items-center pe-4">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                 stroke="currentColor" class="w-5 h-5 cursor-pointer text-gray-600 dark:text-gray-400"

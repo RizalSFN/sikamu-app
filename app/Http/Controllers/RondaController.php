@@ -21,22 +21,27 @@ class RondaController extends Controller
      */
     public function index(Request $request)
     {
-        $data = RondaData::paginate(10);
-
+        $data = RondaData::where('hari', '=', $request->query('hari', 'senin'))->paginate(10);
+        // dd($data);
         if ($data->isEmpty()) {
             $message = 'Data tidak ada';
         } else {
             $message = '';
         }
-        
-        $hari = $request->query('data');
+        $hari = $request->query('hari');
         $start = ($data->currentPage() - 1) * $data->perPage() + 1;
         $title = 'ronda';
 
         if (auth()->user()->role == 'admin') {
             return view('admin.ronda.jadwal_ronda', compact('data', 'message', 'hari', 'title', 'start'));
         } else {
-            return view('page.ronda.jadwal_ronda', compact('data', 'message', 'hari'));
+
+            $warga = Warga::find(auth()->user()->warga_id);
+            if (!$warga->nama || !$warga->foto || !$warga->ttl || !$warga->alamat || !$warga->rt || !$warga->rw || !$warga->desa || !$warga->kecamatan || !$warga->telepon || !$warga->koordinat) {
+                return redirect()->route('profil.edit')->with('error', 'Mohon untuk menglekapi data diri terlebih dahulu');
+            }
+
+            return view('page.ronda.jadwal_ronda', compact('data', 'message', 'hari', 'title', 'start'));
         }
     }
 
@@ -65,7 +70,7 @@ class RondaController extends Controller
     public function edit($id)
     {
         $data = RondaData::findOrFail($id);
-        $ronda = RondaData::all('nama');
+        $ronda = Warga::where('keterangan', '=', 'kepala keluarga')->get();
 
         return view('admin.ronda.edit-jadwal', compact('data', 'ronda'));
     }
@@ -80,5 +85,13 @@ class RondaController extends Controller
         ]);
 
         return redirect()->route('admin.ronda')->with('success', 'data berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $ronda = RondaData::findOrFail($id);
+
+        $ronda->delete();
+        return redirect()->back()->with('success', 'Data berhasil dihapus');
     }
 }

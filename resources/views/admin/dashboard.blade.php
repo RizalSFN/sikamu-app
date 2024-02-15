@@ -8,7 +8,7 @@
             <input type="text" name="search" id="search"
                 class="mt-4  w-6/12 h-10 text-gray-400 bg-slate-200 rounded-xl px-3 " placeholder="Cari warga ...">
             <div class="mx-auto">
-                <ul class="block mx-auto sm:flex justify-between  ">
+                <ul class="block mx-auto sm:flex justify-between">
                     <li
                         class="block w-5/12 mx-auto rounded-md text-1xl sm:w-3/12 py-5 px-5 mt-5 bg-gradient-to-tr  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">
                         <svg class="h-20 p-3 mx-auto " xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
@@ -32,7 +32,7 @@
                     </li>
                 </ul>
             </div>
-            <table class="w-11/12 mx-auto mt-10 bg-slate-200 " id="dataTable">
+            <table class="w-11/12 mx-auto mt-10 bg-slate-200 mb-20 " id="dataTable">
                 <thead>
                     <tr>
                         <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
@@ -46,7 +46,7 @@
                         <tr>
                             <td class="border border-black px-1 py-1 bg-cyan-950 text-white">{{ $start++ }}</td>
                             <td class="border border-black px-1 py-1">{{ $d->nama }}</td>
-                            <td class="border border-black px-1 py-1">{{ $d->alamat }}</td>
+                            <td class="border border-black px-1 py-1">{{ $d->alamat ? $d->alamat : '-' }}</td>
                             <td class="border border-black px-1 py-1">
                                 <a href="{{ route('admin.warga.detail', $d->id) }}"
                                     class="ml-2 bg-green-500 hover:bg-green-700 text-white text-sm font-bold py-1 px-4 border border-green-700 rounded">Detail</a>

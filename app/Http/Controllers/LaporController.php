@@ -19,8 +19,25 @@ class LaporController extends Controller
     {
         $kategori = KategoriBencana::all();
         $warga = Warga::find(auth()->user()->warga_id);
+        $title = 'bantuan';
+
+        if (!$warga->nama || !$warga->foto || !$warga->ttl || !$warga->alamat || !$warga->rt || !$warga->rw || !$warga->desa || !$warga->kecamatan || !$warga->telepon || !$warga->koordinat) {
+            return redirect()->route('profil.edit')->with('error', 'Mohon untuk menglekapi data diri terlebih dahulu');
+        }
+
         // dd($kategori);
-        return view('home.bantuan.bantuan', compact('kategori', 'warga'));
+        return view('home.bantuan.bantuan', compact('kategori', 'warga', 'title'));
+    }
+
+    public function adminIndex()
+    {
+        $title = 'laporan';
+        $lapor = LaporBencana::where('status', '=', 'berlangsung')->orderBy('created_at', 'DESC')->get();
+        $ket = $lapor->isEmpty();
+
+        $selesai = LaporBencana::where('status', '=', 'selesai')->get();
+        $ket2 = $selesai->isEmpty();
+        return view('admin.Bantuan.Laporan', compact('title', 'lapor', 'ket', 'selesai', 'ket2'));
     }
 
     public function bantuan(Request $request)
@@ -28,11 +45,12 @@ class LaporController extends Controller
         $ex = explode('-', $request->input('kategoriBantuan'));
         $laporan = new LaporBencana();
         $laporan->kategori_bencana_id = $ex[0];
-        $laporan->warga_id = auth()->user()->id;
+        $laporan->warga_id = auth()->user()->warga_id;
         $laporan->alamat = $request->input('patokanLokasi');
         $laporan->catatan = $request->input('catatan') ? $request->input('catatan') : NULL;
         $laporan->koordinat = $request->input('koordinat');
-        // $laporan->save();
+        $laporan->status = 'berlangsung';
+        $laporan->save();
 
         $data = [
             "kategori" => $ex[1],
@@ -53,6 +71,20 @@ class LaporController extends Controller
         Mail::to($emailData)->send(new ReportEmailNotification($data));
 
         return redirect()->back()->with('success', 'Bantuan sudah terkirim!');
+    }
+
+    public function update($id)
+    {
+        $lapor = LaporBencana::findOrFail($id);
+        if ($lapor->status == 'selesai') {
+            return redirect()->back()->with('error', 'Invalid laporan');
+        }
+
+        $lapor->update([
+            'status' => 'selesai'
+        ]);
+
+        return redirect()->back()->with('success', 'Laporan berhasil diselesaikan');
     }
 
     public function sendWhatsappMessage($target)

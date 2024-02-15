@@ -20,11 +20,17 @@ class Warga extends Model
         return $this->hasMany(RondaData::class);
     }
 
+    public function lapor_bencana()
+    {
+        return $this->belongsTo(LaporBencana::class);
+    }
+
     protected $fillable = [
         'nik',
         'nama',
         'foto',
         'ttl',
+        'alamat',
         'rt',
         'rw',
         'desa',

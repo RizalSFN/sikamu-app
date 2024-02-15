@@ -63,7 +63,7 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
      *
      * @var bool
      */
-    protected $numbers = false;
+    protected $numbers = true;
 
     /**
      * If the password requires at least one symbol.
@@ -132,8 +132,8 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
             return static::default();
         }
 
-        if (! is_callable($callback) && ! $callback instanceof static) {
-            throw new InvalidArgumentException('The given callback should be callable or an instance of '.static::class);
+        if (!is_callable($callback) && !$callback instanceof static) {
+            throw new InvalidArgumentException('The given callback should be callable or an instance of ' . static::class);
         }
 
         static::$defaultCallback = $callback;
@@ -147,8 +147,8 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
     public static function default()
     {
         $password = is_callable(static::$defaultCallback)
-                            ? call_user_func(static::$defaultCallback)
-                            : static::$defaultCallback;
+            ? call_user_func(static::$defaultCallback)
+            : static::$defaultCallback;
 
         return $password instanceof Rule ? $password : static::min(8);
     }
@@ -312,11 +312,11 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
 
         $validator = Validator::make(
             $this->data,
-            [$attribute => array_merge(['string', 'min:'.$this->min], $this->customRules)],
+            [$attribute => array_merge(['string', 'min:' . $this->min], $this->customRules)],
             $this->validator->customMessages,
             $this->validator->customAttributes
         )->after(function ($validator) use ($attribute, $value) {
-            if (! is_string($value)) {
+            if (!is_string($value)) {
                 return;
             }
 
@@ -324,19 +324,19 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
                 $validator->addFailure($attribute, 'max.string');
             }
 
-            if ($this->mixedCase && ! preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value)) {
+            if ($this->mixedCase && !preg_match('/(\p{Ll}+.*\p{Lu})|(\p{Lu}+.*\p{Ll})/u', $value)) {
                 $validator->addFailure($attribute, 'password.mixed');
             }
 
-            if ($this->letters && ! preg_match('/\pL/u', $value)) {
+            if ($this->letters && !preg_match('/\pL/u', $value)) {
                 $validator->addFailure($attribute, 'password.letters');
             }
 
-            if ($this->symbols && ! preg_match('/\p{Z}|\p{S}|\p{P}/u', $value)) {
+            if ($this->symbols && !preg_match('/\p{Z}|\p{S}|\p{P}/u', $value)) {
                 $validator->addFailure($attribute, 'password.symbols');
             }
 
-            if ($this->numbers && ! preg_match('/\pN/u', $value)) {
+            if ($this->numbers && !preg_match('/\pN/u', $value)) {
                 $validator->addFailure($attribute, 'password.numbers');
             }
         });
@@ -345,7 +345,7 @@ class Password implements Rule, DataAwareRule, ValidatorAwareRule
             return $this->fail($validator->messages()->all());
         }
 
-        if ($this->uncompromised && ! Container::getInstance()->make(UncompromisedVerifier::class)->verify([
+        if ($this->uncompromised && !Container::getInstance()->make(UncompromisedVerifier::class)->verify([
             'value' => $value,
             'threshold' => $this->compromisedThreshold,
         ])) {

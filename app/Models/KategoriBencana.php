@@ -9,4 +9,9 @@ class KategoriBencana extends Model
 {
     use HasFactory;
     protected $table = 'kategori_bencana';
+
+    public function lapor_bencana()
+    {
+        return $this->belongsTo(LaporBencana::class);
+    }
 }

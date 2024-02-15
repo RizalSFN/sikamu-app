@@ -1,177 +1,85 @@
 @extends('layouts.admin-app')
 @section('component')
     <div class="contaier">
-        <div class="relative text-center bg-cover bg-center h-screen"
-            style="background-image: url('/img/bekgron.png');  width: auto;  ">
+        <div class="relative text-center bg-cover bg-center bg-fixed h-screen"
+            style="background-image: url('/img/bekgron.png');  width: auto; overflow-x: hidden; ">
             <div
-                class="container block rounded-lg bg-gray-100 mx-auto  px-10 py-10 h-full w-full md:h-auto md:mt-16  md:max-w-2xl md:mx-auto lg:h-auto lg:max-w-4xl ">
+                class="container block rounded-lg bg-gray-100 mb-16 mx-auto px-10 py-10 h-full w-full md:h-auto md:mt-16 md:max-w-2xl md:mx-auto lg:h-auto lg:max-w-4xl ">
                 <div class="pt-8">
                     <h1 class="text-center font-bold text-3xl">
                         TAMBAH WARGA
                     </h1>
                     @if (session('success'))
-                        <div id="toast-success"
-                            class="flex items-center w-8/12 max-w-x p-4 mt-8 text-black bg-green-300 rounded-lg shadow mx-auto dark:text-white dark:bg-green-300 border-1 border-green-600"
+                        <div class="w-5/12 mx-auto mt-4 flex items-center p-4 text-sm text-green-600 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400"
                             role="alert">
-                            <div
-                                class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
-                                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                </svg>
-                                <span class="sr-only">Check icon</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="flex-shrink-0 inline w-6 h-6 me-3">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                            </svg>
+
+                            <div>
+                                <span class="text-sm">{{ session('success') }}</span>
                             </div>
-                            <div class="ms-3 text-sm font-bold">{{ session('success') }}</div>
-                            <button type="button"
-                                class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700"
-                                data-dismiss-target="#toast-success" aria-label="Close">
-                                <span class="sr-only">Close</span>
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                </svg>
-                            </button>
                         </div>
                     @endif
-                    <form action="{{ route('admin.warga.create.proses') }}" method="post">
+                    <form method="POST" action="{{ route('admin.warga.create.proses') }}">
                         @csrf
-                        <table class="mt-6 text-left mx-auto ">
-                            <tr>
-                                <td>
-                                    NIK
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="number" name="nik" placeholder="Masukkan NIK">
-                                    @error('nik')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ __($message) }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    NO.KK
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="number" name="no_kk" placeholder="Masukkan nomor KK">
-                                    @error('no_kk')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Nama
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="text" name="nama" placeholder="Masukkan nama">
-                                    @error('nama')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    RT
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="number" name="rt" placeholder="Masukkan rt">
-                                    @error('rt')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>RW</td>
-                                <td class="px-2">:</td>
-                                <td>
-                                    <input type="number" name="rw" placeholder="Masukkan rw">
-                                    @error('rw')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Desa
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="text" name="desa" placeholder="masukkan desa">
-                                    @error('desa')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Kecamatan
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="text" name="kecamatan" placeholder="masukkan kecamatan">
-                                    @error('kecamatan')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Nomor Telepon (aktif)
-                                </td>
-                                <td class="px-2">
-                                    :
-                                </td>
-                                <td>
-                                    <input type="number" name="telepon" placeholder="masukkan No Telepon (aktif)">
-                                    @error('telepon')
-                                        <label
-                                            class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                    @enderror
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Keterangan</td>
-                                <td class="px-2">:</td>
-                                <td>
-                                    <select name="keterangan" class="p-2 w-full" required>
-                                        <option value="" selected disabled>-- pilih keterangan --</option>
-                                        <option value="kepala keluarga">Kepala keluarga</option>
-                                        <option value="anggota keluarga">Anggota keluarga</option>
-                                    </select>
-                                </td>
-                            </tr>
-                        </table>
-                        <button type="submit"
-                            class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
+                        <div class=" text-left w-8/12 mx-auto mt-4">
+                            <label for="nik" class="block text-sm font-medium leading-6 text-gray-900">NIK</label>
+                            <div class="mt-1">
+                                <input type="number" id="nik" name="nik" placeholder="Masukkan nomor NIK"
+                                    required autofocus
+                                    class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                            </div>
+                            @error('nik')
+                                <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                            @enderror
+                        </div>
+                        <div class="text-left w-8/12 mx-auto mt-4">
+                            <label for="no_kk" class="block text-sm font-medium leading-6 text-gray-900">No.KK</label>
+                            <div class="mt-1">
+                                <input type="number" id="no_kk" name="no_kk" placeholder="Masukkan nomor KK" required
+                                    autofocus
+                                    class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                            </div>
+                            @error('no_kk')
+                                <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                            @enderror
+                        </div>
+                        <div class=" text-left w-8/12 mx-auto mt-4">
+                            <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
+                            <div class="mt-1">
+                                <input type="text" name="nama" id="nama" placeholder="Masukkan nama" required
+                                    autofocus
+                                    class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                            </div>
+                            @error('nama')
+                                <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                            @enderror
+                        </div>
+                        <div class=" text-left w-8/12 mx-auto mt-4">
+                            <label for="keterangan"
+                                class="block text-sm font-medium leading-6 text-gray-900">Keterangan</label>
+                            <div class="mt-1">
+                                <select name="keterangan" id="keterangan"
+                                    class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                                    <option value="" disable selected>-- Pilih keterangan --</option>
+                                    <option value="kepala keluarga">Kepala Keluarga</option>
+                                    <option value="anggota keluarga">Anggota Keluarga</option>
+                                </select>
+                            </div>
+                            @error('keterangan')
+                                <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                            @enderror
+                        </div>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="mr-4 rounded-md py-2.5 px-3 mt-5 bg-gradient-to-t  from-cyan-700 to-cyan-400 text-white hover:text-cyan-950">Back</a>
+                        <button
+                            class="rounded-md py-2 px-3 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
                     </form>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection

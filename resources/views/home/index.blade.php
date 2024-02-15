@@ -26,7 +26,7 @@
                         </svg>Minta Bantuan
                     </div>
                 </a>
-                <a href="#"
+                <a href="{{ route('ronda') }}"
                     class="block w-8/12 mx-auto rounded-md text-1xl py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 transition transform duration-300 ease-in-out">
                     <div>
                         <svg class="h-24 p-3 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

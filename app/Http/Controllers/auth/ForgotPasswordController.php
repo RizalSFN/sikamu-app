@@ -71,8 +71,8 @@ class ForgotPasswordController extends Controller
     public function update(Request $request)
     {
         $password = $request->validate([
-            'password' => 'required|alpha_num|min:8',
-            'confirm-password' => 'required|alpha_num|min:8'
+            'password' => 'required|min:8|regex:/[0-9]/',
+            'confirm-password' => 'required|min:8|regex:/[0-9]/'
         ]);
 
         if ($request->input('confirm-password') !== $request->password) {

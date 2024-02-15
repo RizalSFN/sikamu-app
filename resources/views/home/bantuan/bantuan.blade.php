@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="bg-fixed overflow-hidden bg-cover  text-center bg-center h-screen"
-        style="background-image: url('/img/bg.png'); height:auto; width:auto; z-index:-10;">
+        style="background-image: url('/img/bekgron.png'); height:auto; width:auto; z-index:-10;">
         <div
             class="container block rounded-lg bg-slate-200 mx-auto  px-3 py-10 h-full  w-full md:max-h-min md:mt-40 md:mb-28 md:max-w-2xl md:mx-auto lg:max-h-min lg:max-w-4xl ">
             <h1 class="text-center font-bold text-3xl pt-10">MINTA BANTUAN</h1>

@@ -52,7 +52,8 @@ class AuthController extends Controller
 
     public function register()
     {
-        return view('auth.register');
+        $title = 'register';
+        return view('auth.register', compact('title'));
     }
 
     public function registerProcess(Request $request)

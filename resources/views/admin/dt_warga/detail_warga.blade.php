@@ -8,7 +8,8 @@
                 <h1 class="text-center font-bold text-3xl">
                     DETAIL WARGA
                 </h1>
-                <img class="mx-auto h-60 w-60 rounded-full mt-6" src="{{ asset('images/' . $warga->foto) }}" alt="profil anda">
+                <img class="mx-auto h-60 w-60 rounded-full mt-6"
+                    src="{{ $warga->foto ? asset('images/' . $warga->foto) : asset('images/profil.jpg') }}" alt="profil anda">
                 <table class="mt-6 text-left mx-10 ">
                     <tr>
                         <td>
@@ -78,7 +79,7 @@
                         </td>
                     </tr>
                 </table>
-                <h1 class="text-center font-bold text-2xl mt-10 ">LOKASI ANDA</h1>
+                <h1 class="text-center font-bold text-2xl mt-10 ">LOKASI WARGA</h1>
                 <div id="map" class="mt-8 h-60 w-6/12 mx-auto border border-black mb-10"></div>
             </div>
         </div>
@@ -86,32 +87,17 @@
     </div>
     <script>
         const koordinat = document.getElementById("koordinat").innerText;
-        if (koordinat !== "") {
-            const exKoor = koordinat.split(", ");
-            const lat = exKoor[0];
-            const long = exKoor[1];
+        const exKoor = koordinat.split(", ");
+        const lat = exKoor[0];
+        const long = exKoor[1];
 
-            let mymap = L.map("map").setView([lat, long], 14);
+        let mymap = L.map("map").setView([lat, long], 14);
 
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                attribution: "SiKaMU - App",
-            }).addTo(mymap);
+        L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "SiKaMU - App",
+        }).addTo(mymap);
 
-            let marker = L.marker([lat, long]).addTo(mymap);
-            marker.bindPopup("Lokasimu").openPopup();
-        } else if (navigator.geolocation) {
-            navigator.geolocation.watchPosition(showPosition);
-        }
-
-        function showPosition(position) {
-            let mymap = L.map("map").setView(
-                [position.coords.latitude, position.coords.longitude],
-                14
-            );
-
-            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-                attribution: "SiKaMU - App",
-            }).addTo(mymap);
-        }
+        let marker = L.marker([lat, long]).addTo(mymap);
+        marker.bindPopup("Lokasi warga").openPopup();
     </script>
 @endsection

@@ -12,13 +12,13 @@
     <link rel="stylesheet" href="{{ asset('css/leaflet.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <script src="{{ asset('js/jquery-3.7.1.slim.min.js') }}"></script>
+    <script src="{{ asset('js/leaflet.js') }}"></script>
 </head>
 
 <body>
     @yield('component')
 
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script> --}}
-    <script src="{{ asset('js/leaflet.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     {{-- <script src="{{ asset('js/script.js') }}"></script> --}}
 </body>
 

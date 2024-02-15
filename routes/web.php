@@ -65,7 +65,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/admin/warga/create/proses', [WargaController::class, 'adminStore'])->name('admin.warga.create.proses');
 
         // Profil Route
-        // TODO pisan
+        Route::get('admin/profil', [ProfilController::class, 'adminIndex'])->name('admin.profil');
+
+        // Laporan Route
+        Route::get('admin/laporan', [LaporController::class, 'adminIndex'])->name('admin.laporan');
+        Route::put('admin/laporan/selesai/{id}', [LaporController::class, 'update'])->name('admin.laporan.selesai');
 
         // Ronda Route
         Route::get('admin/ronda', [RondaController::class, 'index'])->name('admin.ronda');
@@ -73,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('admin/ronda/create/proses', [RondaController::class, 'store'])->name('admin.ronda.create.proses');
         Route::get('admin/ronda/update/{id}', [RondaController::class, 'edit'])->name('admin.ronda.update');
         Route::put('admin/ronda/update/proses/{id}', [RondaController::class, 'update'])->name('admin.ronda.update.proses');
+        Route::delete('/ronda/delete/{id}', [RondaController::class, 'destroy'])->name('admin.ronda.delete');
     });
 
     // Logout Route

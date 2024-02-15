@@ -14,18 +14,18 @@ class WargaSeeder extends Seeder
     public function run(): void
     {
         Warga::create([
-            'nik' => '3204091907060002',
+            'nik' => '3209021912060002',
             'no_kk' => '3244244563745632',
             'nama' => 'Warga',
-            'ttl' => 'bandung/10-01-2024',
-            'jenis_kelamin' => 'laki-laki',
+            'ttl' => 'Bandung/10-01-2024',
             'alamat' => 'Jln. Katapang',
             'rt' => 7,
             'rw' => 2,
             'desa' => 'ceuri',
             'kecamatan' => 'katapang',
             'telepon' => '0877456739467',
-            'keterangan' => 'kepala keluarga'
+            'keterangan' => 'kepala keluarga',
+            'koordinat' => '-7.009973, 107.547529'
         ]);
     }
 }

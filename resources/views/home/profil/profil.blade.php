@@ -34,8 +34,8 @@
                         </button>
                     </div>
                 @endif
-                <img class="mx-auto h-60 w-60 rounded-full mt-6" src="{{ asset('images/' . $data->foto) }}"
-                    alt="profil anda">
+                <img class="mx-auto h-60 w-60 rounded-full mt-6"
+                    src="{{ $data->foto ? asset('images/' . $data->foto) : asset('images/profil.jpg') }}" alt="profil anda">
 
                 <table class="mt-6 text-left mx-10 ">
                     <tr>
@@ -80,7 +80,7 @@
                             :
                         </td>
                         <td class="px-2 py-1">
-                            {{ $data->alamat . ', RT ' . $rt . ' RW ' . $rw . ', Desa ' . $data->desa . ', Kec. ' . $data->kecamatan }}
+                            {{ $data->alamat . ', RT ' . $data->rt . ' RW ' . $data->rw . ', Desa ' . $data->desa . ', Kec. ' . $data->kecamatan }}
                         </td>
                     </tr>
                     <tr>
@@ -102,11 +102,25 @@
                             :
                         </td>
                         <td class="px-2 py-1" id="koordinat">
-                            {{ $data->koordinat }}
+                            {{ $data->koordinat ? $data->koordinat : '-' }}
                         </td>
                     </tr>
                 </table>
                 <h1 class="text-center font-bold text-2xl mt-10">LOKASI ANDA</h1>
+                @if (!$data->koordinat)
+                    <div class="w-5/12 mx-auto mt-4 flex items-center p-4 text-sm text-red-600 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400"
+                        role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="flex-shrink-0 inline w-6 h-6 me-3">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z" />
+                        </svg>
+
+                        <div>
+                            <span class="text-sm">Anda belum memilih lokasi anda</span>
+                        </div>
+                    </div>
+                @endif
                 <div id="map" class="mt-8 mb-8 h-60 w-6/12 mx-auto border border-black"></div>
                 <a href="{{ route('profil.edit') }}"
                     class="rounded-md py-5 px-5 mt-10 bg-gradient-to-r from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah
@@ -117,7 +131,7 @@
     </div>
     <script>
         const koordinat = document.getElementById("koordinat").innerText;
-        if (koordinat !== "") {
+        if (koordinat !== "-") {
             const exKoor = koordinat.split(", ");
             const lat = exKoor[0];
             const long = exKoor[1];
@@ -130,6 +144,19 @@
 
             let marker = L.marker([lat, long]).addTo(mymap);
             marker.bindPopup("Lokasimu").openPopup();
+        } else if (navigator.geolocation) {
+            navigator.geolocation.watchPosition(showPosition);
+        }
+
+        function showPosition(position) {
+            let mymap = L.map("map").setView(
+                [position.coords.latitude, position.coords.longitude],
+                14
+            );
+
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                attribution: "SiKaMU - App",
+            }).addTo(mymap);
         }
     </script>
 @endsection

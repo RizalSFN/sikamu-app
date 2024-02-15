@@ -16,12 +16,13 @@
                         <table class="mx-auto w-11/12 mb-16" id="dynamic_field">
                             <tr>
                                 <td>
-                                    <select class="w-auto mt-3 mr-3 py-1 px-2" name="nama"
-                                        class="form-control name_list col-sm col-md-7">
+                                    <select class="w-auto mt-3 mr-3 py-1 px-2" name="nama">
                                         <option value="" disabled selected>-- Pilih Warga --</option>
                                         @foreach ($ronda as $d)
                                             <option value="{{ $d->nama }}"
-                                                {{ $d->nama == $data->nama ? 'selected' : '' }}>{{ $d->nama }}</option>
+                                                {{ $d->nama == $data->nama ? 'selected' : '' }}>
+                                                {{ $d->nama }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -42,6 +43,8 @@
                                 </td>
                             </tr>
                         </table>
+                        <a href="{{ route('admin.ronda') }}"
+                            class="rounded-md py-1.5 px-2 mr-4 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Back</a>
                         <button type="submit"
                             class="rounded-md py-1 px-2 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit</button>
                     </div>

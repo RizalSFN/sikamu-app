@@ -14,7 +14,6 @@
                         <table class="mx-auto w-11/12 mb-16" id="dynamic_field">
                             <tr>
                                 <td>
-
                                     <select class="w-auto mt-3 mr-3 py-1 px-2" name="nama[]"
                                         class="form-control name_list col-sm col-md-7">
                                         <option value="" disabled selected>-- Pilih Warga --</option>
@@ -42,8 +41,10 @@
                                 </td>
                             </tr>
                         </table>
+                        <a href="{{ route('admin.dashboard') }}"
+                            class="mr-4 rounded-md py-2.5 px-3 mt-5 bg-gradient-to-t  from-cyan-700 to-cyan-400 text-white hover:text-cyan-950">Back</a>
                         <button type="submit"
-                            class="rounded-md py-1 px-2 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit</button>
+                            class="rounded-md px-3 py-2 mt-3 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit</button>
                     </div>
                 </form>
             </div>

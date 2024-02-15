@@ -20,7 +20,12 @@ class WargaController extends Controller
     {
         $id = Auth()->user()->warga_id;
         $data = Warga::find($id);
-        return view('home.index', ["title" => 'beranda', "data" => $data]);
+
+        if (!$data->nama || !$data->foto || !$data->ttl || !$data->alamat || !$data->rt || !$data->rw || !$data->desa || !$data->kecamatan || !$data->telepon || !$data->koordinat) {
+            return redirect()->route('profil.edit')->with('error', 'Mohon untuk menglekapi data diri terlebih dahulu');
+        }
+
+        return view('home.index', compact('data'));
     }
 
     public function adminIndex()
@@ -51,12 +56,7 @@ class WargaController extends Controller
         $user = $request->validate([
             'nik' => 'required|integer|digits:16',
             'no_kk' => 'required|integer|digits:16',
-            'nama' => 'required|alpha',
-            'rt' => 'required|numeric',
-            'rw' => 'required|numeric',
-            'desa' => 'required',
-            'kecamatan' => 'required',
-            'telepon' => 'required|numeric',
+            'nama' => 'required',
             'keterangan' => 'required'
         ]);
 
@@ -64,12 +64,6 @@ class WargaController extends Controller
         $data->nik = $request->input('nik');
         $data->no_kk = $request->input('no_kk');
         $data->nama = $request->input('nama');
-        $data->alamat = $request->input('alamat');
-        $data->rt =  $request->input('rt');
-        $data->rw = $request->input('rw');
-        $data->desa = $request->input('desa');
-        $data->kecamatan = $request->input('kecamatan');
-        $data->telepon = $request->input('telepon');
         $data->keterangan = $request->input('keterangan');
         // dd($data);
         $data->save();
@@ -93,7 +87,8 @@ class WargaController extends Controller
         $rt = strlen($warga->rt) == 1 ? '00' . $warga->rt  : '0' . $warga->rt;
         $rw = strlen($warga->rw) == 1 ? '00' . $warga->rw : '0' . $warga->rw;
         // dd($warga);
-        return view('admin.dt_warga.detail_warga', compact('warga', 'rt', 'rw'));
+        $title = 'detail';
+        return view('admin.dt_warga.detail_warga', compact('warga', 'rt', 'rw', 'title'));
     }
 
     /**
