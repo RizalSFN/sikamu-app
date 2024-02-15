@@ -7,7 +7,7 @@
 
 ## 2. Buka di text editor kesayangan kalian
 
-## 3. Buka terminal dan jalankan 2 perintah berikut :
+## 3. Buka terminal pada text editor dan jalankan 2 perintah berikut :
 
 -   ### `npm install`
 -   ### `composer install`
