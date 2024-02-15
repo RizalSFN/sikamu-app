@@ -9,8 +9,22 @@
                     ADMIN SIKAMU
                 </h1>
                 <img class="mx-auto h-52 w-52 rounded-full mt-6" src="/img/profil.jpg" alt="profil anda">
+                @if (session('success'))
+                    <div class="w-10/12 lg:w-4/12 mx-auto mt-4 flex items-center p-4 text-sm text-green-600 rounded-lg bg-green-200 dark:bg-gray-800 dark:text-green-400"
+                        role="alert">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="flex-shrink-0 inline w-6 h-6 me-3">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
 
-                <table class="mt-6 text-left mx-auto mb-4 ">
+                        <div>
+                            <span class="text-sm">{{ session('success') }}</span>
+                        </div>
+                    </div>
+                @endif
+
+                <table class="mt-6 text-left mx-auto mb-4">
                     <tr>
                         <td>
                             Nama
@@ -45,13 +59,15 @@
                         </td>
                     </tr>
                 </table>
+                <a href="{{ route('admin.profil.edit') }}"
+                    class="rounded-md py-3 cursor-pointer px-3 mb-8 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah</a>
                 <a data-modal-target="static-modal" data-modal-toggle="static-modal"
                     class="rounded-md py-3 cursor-pointer px-3 mb-8 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">LOGOUT!</a>
             </div>
         </div>
     </div>
     <div id="static-modal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-4/12 mx-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-11/12 lg:w-4/12 mx-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
             <!-- Modal content -->
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -72,7 +88,7 @@
                     </button>
                 </div>
                 <!-- Modal footer -->
-                <div class="flex w-3/12 items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                <div class="flex w-3/12 mt-4 items-center p-4 text-sm md:p-5 dark:border-gray-600">
                     <a data-modal-hide="static-modal" href="{{ route('logoutProses') }}"
                         class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Logout</a>
                     <button data-modal-hide="static-modal" type="button"

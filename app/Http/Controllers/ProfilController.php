@@ -89,6 +89,13 @@ class ProfilController extends Controller
         // dd($tanggal);
     }
 
+    public function adminEdit()
+    {
+        $title = 'profil';
+        $data = User::findOrFail(auth()->user()->id);
+        return view('admin.profil.edit-pr-admin', compact('title', 'data'));
+    }
+
     /**
      * Update the specified resource in storage.
      */
@@ -161,27 +168,28 @@ class ProfilController extends Controller
         }
     }
 
-    private function resizeTheImage($image, $width, $height)
+    public function adminUpdate(Request $request)
     {
-        list($originalWidth, $originalHeight) = getimagesize($image->getPathname());
+        $data = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:8|regex:/[0-9]/'
+        ]);
 
-        $ratio = $originalWidth / $originalHeight;
+        $user = User::findOrFail(auth()->user()->id);
 
-        $newWidth = $width;
-        $newHeight = $height;
-
-        if ($newWidth / $newHeight > $ratio) {
-            $newWidth = $newHeight * $ratio;
+        if ($request->password == $user->password) {
+            $user->update([
+                'email' => $request->email,
+            ]);
         } else {
-            $newHeight = $newWidth / $ratio;
+            $user->update([
+                'email' => $request->email,
+                'password' => Hash::make($request->password)
+            ]);
         }
 
-        $resizedImage = imagecreatetruecolor($newWidth, $newHeight);
-        $sourceImage = imagecreatefromstring(file_get_contents($image->getPathname()));
 
-        imagecopyresampled($resizedImage, $sourceImage, 0, 0, 0, 0, $newWidth, $newHeight, $originalWidth, $originalHeight);
-
-        return $resizedImage;
+        return redirect()->route('admin.profil')->with('success', 'Data berhasil diperbarui');
     }
 
     /**

@@ -6,7 +6,7 @@
         <div class="mx-auto mt-32 text-center">
             <h1 class="text-3xl text-black font-semibold">JADWAL RONDA</h1>
         </div>
-        <div class="container max-w-min mx-auto inline-flex space-x-3">
+        <div class="container max-w-min mx-auto inline-flex space-x-3 overflow-x-auto">
             <a href="{{ route('ronda', ['hari' => 'senin']) }}"
                 class="rounded-md mt-5 px-2 py-2 md:rounded-md md:text-1xl md:py-2 md:px-2 md:mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 {{ $hari == 'senin' ? 'text-cyan-400' : 'hover:text-cyan-400' }}">Senin</a>
             <a href="{{ route('ronda', ['hari' => 'selasa']) }}"

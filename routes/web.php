@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
 
         // Profil Route
         Route::get('admin/profil', [ProfilController::class, 'adminIndex'])->name('admin.profil');
+        Route::get('/admin/profil/edit', [ProfilController::class, 'adminEdit'])->name('admin.profil.edit');
+        Route::put('/admin/profil/edit/proses', [ProfilController::class, 'adminUpdate'])->name('admin.profil.edit.proses');
 
         // Laporan Route
         Route::get('admin/laporan', [LaporController::class, 'adminIndex'])->name('admin.laporan');

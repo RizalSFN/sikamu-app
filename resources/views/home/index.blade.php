@@ -2,7 +2,7 @@
 
 @section('component')
     <div class="relative overflow-hidden bg-cover  text-center bg-center bg-fixed"
-        style="background-image: url('/img/bg.png'); height:auto; width:auto;">
+        style="background-image: url('/img/bekgron.png'); height:auto; width:auto;">
         <div
             class="container block rounded-lg bg-transparant mx-auto my-auto max-h-min min-w-0 md:max-h-min md:max-w-2xl lg:max-h-min lg:max-w-4xl ">
             <div class="block mx-auto py-auto px-5 py-5">

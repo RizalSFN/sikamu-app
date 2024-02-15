@@ -28,13 +28,14 @@
                     <!--munculkan waktu kejadian-->
                     <p class="text-left font-basic text-1xl">{{ $l->created_at }}</p>
                     <!-- Munculin Kategori Minta bantuannya-->
-                    <h2 class="text-left font-basic text-2xl mt-3">{{ $l->kategori_bencana->nama }}</h2>
+                    <h2 class="text-left font-basic text-2xl mt-3">Kategori : <b>{{ $l->kategori_bencana->nama }}</b></h2>
                     <!-- Munculkan nama warga-->
-                    <p class="text-left font-basic text-1xl">{{ $l->warga->nama }}</p>
+                    <p class="text-left font-basic text-1xl">Pelapor : <b>{{ $l->warga->nama }}</b></p>
                     <!-- Munculkan alamat warga bukan no.rumah rt rw desanya saja-->
-                    <p class="text-left font-basic text-1xl">-</p>
+                    <p class="text-left font-basic text-1xl">Alamat pelapor :
+                        <b>{{ 'RT ' . $l->warga->rt . ' RW ' . $l->warga->rw . ' Desa ' . $l->warga->desa }}</b></p>
                     <!-- Munculkan note yang di isi warga-->
-                    <p class="text-left font-basic text-1xl">Note: {{ $l->catatan }}</p>
+                    <p class="text-left font-basic text-1xl">Catatan : <b>{{ $l->catatan }}</b></p>
                     <div class="text-right mt-4 flex justify-end">
                         <a href="{{ 'https://maps.google.com/?q=' . $l->koordinat }}" target="_blank"
                             class="rounded-md text-sm py-2 px-2 w-25 md:text-base md:font-semibold md:rounded-md md:py-3 md:px-3 md:text-1xl mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400 ">Lokasi</a>

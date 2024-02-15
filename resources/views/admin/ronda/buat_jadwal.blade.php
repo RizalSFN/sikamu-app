@@ -11,7 +11,7 @@
                 <form method="POST" action="{{ route('admin.ronda.create.proses') }}">
                     @csrf
                     <div class="mx-auto text-center">
-                        <table class="mx-auto w-11/12 mb-16" id="dynamic_field">
+                        <table class="mx-auto w-8/12 mb-16" id="dynamic_field">
                             <tr>
                                 <td>
                                     <select class="w-auto mt-3 mr-3 py-1 px-2" name="nama[]"
