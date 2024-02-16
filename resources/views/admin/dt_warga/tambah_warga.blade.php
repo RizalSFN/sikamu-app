@@ -47,7 +47,7 @@
                 </div>
 
                         <button
-                            class="rounded-md py-5 px-5 mt-5 bg-gradient-to-r  from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!!</button>
+                            class="rounded-md py-3 px-4 mt-5 bg-gradient-to-b  from-cyan-500 to-cyan-700 text-cyan-100 hover:text-cyan-950">Submit!!</button>
                 </div>
             </div>
             </form>

@@ -23,7 +23,7 @@
     </ul>
   </div>
                 
-    <table class="w-11/12 mx-auto mt-10 bg-slate-200 ">
+    <table class="w-11/12 mx-auto mt-10 mb-10 bg-slate-200 ">
         <tr>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
             <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Nama</th>

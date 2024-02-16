@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('greeting',function (){
-    return view('page.ronda.jadwal_ronda');
+    return view('admin.dashboard ');
 });
 
 Route::get('/send-email', function () {
