@@ -24,7 +24,7 @@
                     </div>
                 @endif
 
-                <table class="mt-6 text-left mx-auto mb-4">
+                <table class="table-auto w-8/12 mt-6 text-left mx-auto mb-4 ">
                     <tr>
                         <td>
                             Nama
@@ -33,7 +33,7 @@
                             :
                         </td>
                         <td class="px-2 py-1">
-                            <input type="email" value="{{ $data[0]->name }}"></input>
+                            <input type="email" value="{{ $data[0]->name }}" size="10"></input>
                         </td>
                     </tr>
                     <tr>
@@ -44,7 +44,7 @@
                             :
                         </td>
                         <td class="px-2 py-1">
-                            <input type="email" value="{{ $data[0]->email }}" readonly></input>
+                            <input type="email" value="{{ $data[0]->email }}" size="10" readonly></input>
                         </td>
                     </tr>
                     <tr>
@@ -55,14 +55,16 @@
                             :
                         </td>
                         <td class="px-2 py-1">
-                            <input type="password" value="{{ $data[0]->password }}" readonly></input>
+                            <input type="password" value="{{ $data[0]->password }}" size="10"readonly></input>
                         </td>
                     </tr>
                 </table>
-                <a href="{{ route('admin.profil.edit') }}"
-                    class="rounded-md py-3 cursor-pointer px-3 mb-8 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah</a>
-                <a data-modal-target="static-modal" data-modal-toggle="static-modal"
-                    class="rounded-md py-3 cursor-pointer px-3 mb-8 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">LOGOUT!</a>
+                <div class="mt-16 mb-16">
+                    <a href="{{ route('admin.profil.edit') }}"
+                        class="rounded-md py-3 cursor-pointer px-3 mb-8 mt-16 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Ubah</a>
+                    <a data-modal-target="static-modal" data-modal-toggle="static-modal"
+                        class="rounded-md py-3 cursor-pointer px-3 mb-8 mt-16 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Logout</a>
+                </div>
             </div>
         </div>
     </div>

@@ -13,49 +13,42 @@
                 <form action="{{ route('admin.profil.edit.proses') }}" method="POST">
                     @csrf
                     @method('PUT')
-                    <table class="mt-6 text-left mx-auto mb-4">
-                        <tr>
-                            <td>
-                                Nama
-                            </td>
-                            <td class="px-2">
-                                :
-                            </td>
-                            <td class="px-2 py-1">
-                                <input type="text" value="{{ $data->name }}" readonly>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Email
-                            </td>
-                            <td class="px-2">
-                                :
-                            </td>
-                            <td class="px-2 py-1">
-                                <input type="email" name="email" value="{{ $data->email }}">
-                                @error('email')
-                                    <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                @enderror
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Password
-                            </td>
-                            <td class="px-2">
-                                :
-                            </td>
-                            <td class="px-2 py-1">
-                                <input type="password" name="password" value="{{ $data->password }}">
-                                @error('password')
-                                    <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
-                                @enderror
-                            </td>
-                        </tr>
-                    </table>
+                    <div class=" text-left w-8/12 mx-auto mt-4">
+                        <label for="nama" class="block text-sm font-medium leading-6 text-gray-900">Nama</label>
+                        <div class="mt-1">
+                            <input type="text" name="name" id="name" value="{{ $data->name }}"
+                                placeholder="Lengkapi Alamat Anda" required
+                                class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                        </div>
+                        @error('nama')
+                            <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                        @enderror
+                    </div>
+                    <div class=" text-left w-8/12 mx-auto mt-4">
+                        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email</label>
+                        <div class="mt-1">
+                            <input type="email" name="email" id="email" value="{{ $data->email }}"
+                                placeholder="Lengkapi Alamat Anda" required
+                                class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                        </div>
+                        @error('alamat')
+                            <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                        @enderror
+                    </div>
+                    <div class=" text-left w-8/12 mx-auto mt-4">
+                        <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
+                        <div class="mt-1">
+                            <input type="password" name="password" id="password" value="{{ $data->password }}"
+                                placeholder="Lengkapi Alamat Anda" required
+                                class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6">
+                        </div>
+                        @error('password')
+                            <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
+                        @enderror
+                    </div>
+
                     <button type="submit"
-                        class="rounded-md py-3 cursor-pointer px-3 mb-8 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!</button>
+                        class="rounded-md py-3 cursor-pointer px-3 mb-8 mt-10 bg-gradient-to-r   from-cyan-950 to-cyan-700 text-cyan-100 hover:text-cyan-400">Submit!</button>
                 </form>
             </div>
         </div>

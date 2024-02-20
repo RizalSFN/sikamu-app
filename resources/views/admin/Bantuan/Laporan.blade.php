@@ -33,7 +33,8 @@
                     <p class="text-left font-basic text-1xl">Pelapor : <b>{{ $l->warga->nama }}</b></p>
                     <!-- Munculkan alamat warga bukan no.rumah rt rw desanya saja-->
                     <p class="text-left font-basic text-1xl">Alamat pelapor :
-                        <b>{{ 'RT ' . $l->warga->rt . ' RW ' . $l->warga->rw . ' Desa ' . $l->warga->desa }}</b></p>
+                        <b>{{ 'RT ' . $l->warga->rt . ' RW ' . $l->warga->rw . ' Desa ' . $l->warga->desa }}</b>
+                    </p>
                     <!-- Munculkan note yang di isi warga-->
                     <p class="text-left font-basic text-1xl">Catatan : <b>{{ $l->catatan }}</b></p>
                     <div class="text-right mt-4 flex justify-end">
@@ -50,7 +51,7 @@
             @endforeach
         @endif
 
-        <table class="w-11/12 mx-auto {{ !$ket ? 'mt-7' : 'mt-60' }} mb-16 bg-slate-200 ">
+        <table class="w-8/12 lg:w-11/12 mx-auto {{ !$ket ? 'mt-7' : 'mt-60' }} mb-16 bg-slate-200 ">
             <tr>
                 <th class="border border-black px-1 py-1 bg-cyan-950 text-white">No</th>
                 <th class="border border-black px-1 py-1 bg-cyan-950 text-white">Pelapor</th>

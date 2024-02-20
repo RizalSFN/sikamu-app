@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('component')
-    <div class="sm:mx-auto sm:w-full sm:max-w-sm mt-44 border-2 border-slate-600 rounded-md p-4">
+    <div class="lg:w-full smx-auto w-8/12 sm:max-w-sm mt-44 border-2 border-slate-600 rounded-md p-4">
         @if (session('error'))
             <div class="w-full mx-auto my-3 flex items-center p-4 text-sm text-red-600 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400"
                 role="alert">
@@ -25,7 +25,7 @@
                 <div class="mt-2">
                     <div class="relative">
                         <input type="password" id="password" name="password"
-                            class="block w-full px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
+                            class="block w-8/12 px-4 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-cyan-600 sm:text-sm sm:leading-6"
                             placeholder="Enter your new password" autocomplete="off" required autofocus>
                         @error('password')
                             <label class="block text-sm font-medium leading-6 text-red-600">{{ $message }}</label>
